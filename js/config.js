@@ -11,7 +11,7 @@ window.WEDDING_CONFIG = {
   groomDisplay: "Truong Hoang",
   brideDisplay: "Thuý Linh",
   groomSignature: "Truong",
-  brideSignature: "Thuý Linh",
+  brideSignature: "Linh",
   groomRole: "Út Nam",
   brideRole: "Út Nữ",
 
@@ -36,7 +36,7 @@ window.WEDDING_CONFIG = {
      ========================================================= */
   groomFather: "Ông: HOÀNG THẾ PHIỆT",
   groomMother: "Bà: BÙI THỊ LÀ",
-  groomAddress: "TP Hồ Chí Minh",
+  groomAddress: "USA",
 
   brideFather: "Ông: LƯƠNG SUM",
   brideMother: "Bà: HUỲNH THỊ MUỐI",

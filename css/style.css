@@ -12,6 +12,7 @@
   --serif:"Cormorant Garamond", Georgia, serif;
   --sans:"Montserrat", Arial, sans-serif;
   --script:"Italianno", cursive;
+  --signature-font:"WindSong", "Italianno", cursive;
   --opening-font:var(--serif);
   --shadow:0 9px 22px rgba(31,27,22,.16);
 }
@@ -896,4 +897,305 @@ footer{display:none}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   [data-reveal],.intro-seq,.profile-name-pill{opacity:1!important;transform:none!important}
+}
+
+
+/* =========================================================
+   V13 — COMPACT TIMELINE cạnh mũi tên
+   ========================================================= */
+.event-route-layout{
+  width:min(100%,390px);
+  margin:8px auto 22px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 112px;
+  align-items:center;
+  gap:8px;
+}
+.compact-timeline{
+  text-align:left;
+  padding:15px 15px 13px;
+  border:1px solid rgba(95,88,81,.42);
+  border-radius:18px;
+  background:rgba(255,255,255,.38);
+}
+.compact-timeline-head{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:0 0 9px;
+  color:var(--brown);
+}
+.compact-timeline-head strong{
+  font:600 15px/1 var(--serif);
+  letter-spacing:.08em;
+}
+.compact-ornament{font-size:12px;color:#8e8982}
+.compact-step{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  align-items:baseline;
+  gap:8px;
+  padding:6px 0;
+  border-top:1px solid rgba(100,94,86,.16);
+}
+.compact-step:first-of-type{border-top:0}
+.compact-time{
+  font:500 11px/1.15 var(--serif);
+  color:#24211e;
+  white-space:nowrap;
+}
+.compact-label{
+  font:500 15px/1.1 var(--serif);
+  color:var(--brown);
+}
+.event-route-layout .route-arrow{
+  width:112px;
+  height:142px;
+  margin:0;
+  justify-self:center;
+}
+.venue-section{padding-top:18px}
+/* Timeline standalone cũ đã bỏ khỏi HTML. */
+.timeline-section{display:none!important}
+
+@media (max-width:390px){
+  .event-route-layout{grid-template-columns:minmax(0,1fr) 96px;gap:5px}
+  .event-route-layout .route-arrow{width:96px;height:130px}
+  .compact-timeline{padding:13px 12px 11px;border-radius:16px}
+  .compact-step{grid-template-columns:66px 1fr;gap:6px}
+  .compact-time{font-size:10px}
+  .compact-label{font-size:14px}
+}
+
+/* V14 — move invitation text down above event card */
+.invite-copy.invite-copy-lower{
+  margin:18px auto 18px;
+}
+
+
+/* V15 — đổi font phần chữ ký trước OUR MEMORIES giống hình mẫu hơn */
+.signature-block{
+  margin-top:20px;
+  gap:4px;
+}
+.signature-block span{
+  display:block;
+  font-family:var(--signature-font);
+  font-weight:500;
+  font-size:92px;
+  line-height:.76;
+  letter-spacing:0;
+  color:#111;
+}
+.signature-block em{
+  font:400 18px/1 var(--serif);
+  margin:2px 0 8px;
+  color:#4d4944;
+}
+@media (min-width:768px){
+  .signature-block{margin-top:28px;gap:6px}
+  .signature-block span{font-size:118px;line-height:.74}
+  .signature-block em{font-size:24px;margin:4px 0 10px}
+}
+
+
+/* =========================================================
+   V16 — REFERENCE SPACING / ROUTE / TIMELINE / EFFECTS
+   ========================================================= */
+
+/* Lời mời: thoáng, chia nhịp giống bố cục mẫu */
+.invitation-section{
+  padding-top:72px;
+  padding-bottom:72px;
+}
+.invite-copy.invite-copy-lower{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  max-width:390px;
+  margin:30px auto 30px;
+  color:#24211f;
+  font:400 17px/1.52 var(--sans);
+  letter-spacing:-.012em;
+  text-align:center;
+}
+.invite-copy-line{display:block}
+.invite-couple{
+  display:block;
+  margin-top:10px;
+  color:#201d1a;
+  font:500 21px/1.15 var(--serif);
+  letter-spacing:-.012em;
+}
+.invite-couple em{
+  display:inline-block;
+  margin:0 5px;
+  font:400 18px/1 var(--serif);
+  font-style:italic;
+}
+.event-card{
+  margin-top:4px;
+}
+
+/* Cụm timeline + mũi tên: gọn, giống tỷ lệ mẫu hơn */
+.event-route-layout{
+  width:min(100%,390px);
+  margin:34px auto 22px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 92px;
+  align-items:center;
+  gap:12px;
+}
+.compact-timeline{
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  text-align:left;
+}
+.compact-timeline-head{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:0 0 11px;
+  color:var(--brown);
+}
+.compact-timeline-head strong{
+  font:600 15px/1 var(--serif);
+  letter-spacing:.065em;
+}
+.compact-ornament{font-size:11px;color:#8f8982}
+.compact-step{
+  position:relative;
+  display:grid;
+  grid-template-columns:78px minmax(0,1fr);
+  align-items:baseline;
+  gap:8px;
+  padding:6px 0 7px;
+  border-top:1px solid rgba(95,89,82,.16);
+}
+.compact-step:first-of-type{border-top:0}
+.compact-step::before{
+  content:"";
+  position:absolute;
+  left:-9px;
+  top:13px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#9a5a35;
+  opacity:.68;
+}
+.compact-time{
+  color:#292522;
+  font:500 11px/1.15 var(--serif);
+  white-space:nowrap;
+}
+.compact-label{
+  color:var(--brown);
+  font:500 15px/1.12 var(--serif);
+  white-space:nowrap;
+}
+.event-route-layout .route-arrow{
+  width:92px;
+  height:174px;
+  margin:0;
+  justify-self:center;
+  align-self:center;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity .65s ease,transform 1s cubic-bezier(.16,1,.3,1);
+}
+.route-arrow.is-visible{opacity:1;transform:none}
+.route-arrow svg{display:block;width:100%;height:100%;overflow:visible}
+.route-path{
+  stroke-dasharray:.045 .055;
+  stroke-dashoffset:1;
+  transition:stroke-dashoffset 1.45s cubic-bezier(.33,.02,.2,1);
+}
+.route-arrow.is-visible .route-path{stroke-dashoffset:0}
+.route-heart{
+  opacity:0;
+  fill:#d14a36;
+  font:700 12px/1 var(--sans);
+  transform:scale(.5) rotate(-12deg);
+  transform-origin:47px 147px;
+  transition:opacity .35s .95s ease,transform .55s .95s cubic-bezier(.16,1.35,.3,1);
+}
+.route-arrow.is-visible .route-heart{opacity:1;transform:scale(1) rotate(-12deg)}
+
+/* Venue / map cân giống mẫu: text trước, map lớn phía dưới */
+.venue-section{
+  padding:0 24px 56px;
+  text-align:center;
+}
+.venue-section .small-heading{
+  margin-top:5px;
+  margin-bottom:11px;
+  font-size:17px;
+}
+.venue-heading{
+  max-width:390px;
+  margin-bottom:10px;
+  font-size:25px;
+  line-height:1.12;
+}
+.venue-address{
+  max-width:390px;
+  margin-bottom:18px;
+  font-size:14px;
+  line-height:1.5;
+}
+.brown-button{
+  min-height:42px;
+  padding:0 25px;
+  font-size:13px;
+}
+.map-frame{
+  width:100%;
+  height:315px;
+  margin:20px auto 0;
+  overflow:hidden;
+  border-radius:0;
+  background:#e8e5df;
+  transform-origin:center top;
+}
+.map-frame iframe{filter:none}
+
+/* Reveal chuyển động: chạy ngang rồi chậm dần vào vị trí */
+[data-reveal]{
+  transition-duration:1.08s;
+  transition-timing-function:cubic-bezier(.12,.82,.2,1);
+}
+[data-reveal="left-soft"]{transform:translateX(-86px);opacity:0}
+[data-reveal="right-soft"]{transform:translateX(86px);opacity:0}
+[data-reveal="invite"]{transform:translateX(-110px);opacity:0}
+[data-reveal="timeline-left"]{transform:translateX(-54px);opacity:0}
+[data-reveal="timeline-right"]{transform:translateX(54px);opacity:0}
+[data-reveal="card"]{transform:translateY(24px) scale(.92);opacity:0;filter:blur(.45px)}
+[data-reveal="map"]{transform:translateY(28px) scale(.965);opacity:0;filter:blur(.4px)}
+[data-reveal="route"]{opacity:0}
+[data-reveal].is-visible{opacity:1;transform:none;filter:none}
+
+/* event card trong mẫu vào nhẹ rồi nội dung chạy lần lượt */
+.event-card[data-reveal="card"]{transition-duration:1.12s}
+
+@media (max-width:390px){
+  .invite-copy.invite-copy-lower{font-size:15.5px;line-height:1.55;margin:26px auto 27px}
+  .invite-couple{font-size:19px;margin-top:8px}
+  .event-route-layout{grid-template-columns:minmax(0,1fr) 82px;gap:8px;margin-top:28px}
+  .event-route-layout .route-arrow{width:82px;height:160px}
+  .compact-step{grid-template-columns:68px minmax(0,1fr);gap:6px;padding:5px 0 6px}
+  .compact-time{font-size:10px}
+  .compact-label{font-size:14px}
+  .compact-timeline-head strong{font-size:14px}
+  .venue-section{padding-left:18px;padding-right:18px}
+  .venue-heading{font-size:23px}
+  .venue-address{font-size:13px}
+  .map-frame{height:286px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .route-path{stroke-dashoffset:0!important}
+  .route-heart{opacity:1!important;transform:none!important}
 }

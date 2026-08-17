@@ -236,7 +236,12 @@ setInterval(updateCountdown,1000);
 /* Hiệu ứng xuất hiện lần lượt trong từng section */
 document.querySelectorAll(".site-shell section").forEach(section => {
   section.querySelectorAll("[data-reveal]").forEach((el,index) => {
-    el.style.setProperty("--reveal-delay", `${Math.min(index * 0.075, 0.36)}s`);
+    const type = el.dataset.reveal || "";
+    let delay = Math.min(index * 0.065, 0.32);
+    if(type === "timeline-left" || type === "timeline-right") delay = Math.min(index * 0.095, 0.34);
+    if(type === "route") delay = 0.22;
+    if(type === "map") delay = 0.16;
+    el.style.setProperty("--reveal-delay", `${delay}s`);
   });
 });
 
@@ -244,11 +249,11 @@ if("IntersectionObserver" in window){
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
-        entry.target.classList.add("is-visible");
+        requestAnimationFrame(() => entry.target.classList.add("is-visible"));
         observer.unobserve(entry.target);
       }
     });
-  },{threshold:.10,rootMargin:"0px 0px -2% 0px"});
+  },{threshold:.08,rootMargin:"0px 0px -3% 0px"});
 
   document.querySelectorAll("[data-reveal]").forEach(el => observer.observe(el));
 
