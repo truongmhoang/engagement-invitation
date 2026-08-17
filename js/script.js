@@ -82,6 +82,8 @@ const progress = document.getElementById("musicProgress");
 const currentTimeEl = document.getElementById("currentTime");
 const durationTimeEl = document.getElementById("durationTime");
 const backToTop = document.getElementById("backToTop");
+const recordPhoto = document.querySelector(".record-photo");
+const miniPlayer = document.querySelector(".mini-player");
 
 document.body.classList.add("locked");
 
@@ -96,7 +98,9 @@ function syncPlayerUI(){
   if(!music) return;
   const playing = !music.paused;
   musicToggle?.classList.toggle("playing", playing);
-  if(inlinePlay) inlinePlay.textContent = playing ? "❚❚" : "▶";
+  miniPlayer?.classList.toggle("playing", playing);
+  recordPhoto?.classList.toggle("is-spinning", playing);
+  if(inlinePlay) inlinePlay.setAttribute("aria-label", playing ? "Tạm dừng" : "Phát");
 }
 
 async function playMusic(){
@@ -141,6 +145,7 @@ document.querySelectorAll("[data-music-action]").forEach(button => {
     if(action === "restart") music.currentTime = 0;
     if(action === "back") music.currentTime = Math.max(0, music.currentTime - 10);
     if(action === "forward") music.currentTime = Math.min(music.duration || music.currentTime + 10, music.currentTime + 10);
+    if(action === "shuffle" && Number.isFinite(music.duration) && music.duration > 5){ music.currentTime = Math.random() * Math.max(1, music.duration - 1); }
     if(music.paused) await playMusic();
   });
 });
@@ -222,6 +227,13 @@ setInterval(updateCountdown,1000);
 /* =========================================================
    HIỆU ỨNG KHI CUỘN — tách từng element thay vì cả section
    ========================================================= */
+/* Hiệu ứng xuất hiện lần lượt trong từng section */
+document.querySelectorAll(".site-shell section").forEach(section => {
+  section.querySelectorAll("[data-reveal]").forEach((el,index) => {
+    el.style.setProperty("--reveal-delay", `${Math.min(index * 0.075, 0.36)}s`);
+  });
+});
+
 if("IntersectionObserver" in window){
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -230,13 +242,24 @@ if("IntersectionObserver" in window){
         observer.unobserve(entry.target);
       }
     });
-  },{threshold:.22,rootMargin:"0px 0px -8% 0px"});
+  },{threshold:.10,rootMargin:"0px 0px -2% 0px"});
 
-  document.querySelectorAll("[data-reveal]").forEach(el => {
-    observer.observe(el);
-  });
+  document.querySelectorAll("[data-reveal]").forEach(el => observer.observe(el));
+
+  /* Quan sát section thay vì pill để animation ngang luôn chạy được */
+  const profileObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        setTimeout(() => entry.target.classList.add("profile-in"), 190);
+        profileObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12,rootMargin:"0px 0px -5% 0px"});
+
+  document.querySelectorAll(".profile-section").forEach(section => profileObserver.observe(section));
 }else{
   document.querySelectorAll("[data-reveal]").forEach(el => el.classList.add("is-visible"));
+  document.querySelectorAll(".profile-section").forEach(section => section.classList.add("profile-in"));
 }
 
 /* =========================================================

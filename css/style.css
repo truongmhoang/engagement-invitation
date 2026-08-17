@@ -247,7 +247,7 @@ a{color:inherit;text-decoration:none}
 /* =========================================================
    FAMILY PROFILES
    ========================================================= */
-.profile-section{padding:48px 26px 24px;text-align:center;min-height:0}
+.profile-section{padding:34px 26px 16px;text-align:center;min-height:0}
 .oval-photo{
   width:56%;
   aspect-ratio:.71;
@@ -259,7 +259,7 @@ a{color:inherit;text-decoration:none}
   overflow:hidden;
 }
 .oval-photo img{height:100%;object-fit:cover;border-radius:50% / 44%}
-.family-copy{margin-bottom:18px}
+.family-copy{margin-bottom:12px}
 .small-heading{margin:0 0 6px;font:500 8px/1.2 var(--sans);letter-spacing:.045em;text-transform:uppercase}
 .parent-line{margin:1px 0;font:600 7.5px/1.35 var(--sans)}
 .micro-copy{margin:5px 0 0;font:400 6.5px/1.45 var(--sans);color:#77736d}
@@ -379,30 +379,30 @@ a{color:inherit;text-decoration:none}
 
 
 /* =========================================================
-   TIMELINE
+   TIMELINE — compact
    ========================================================= */
-.timeline-section{padding:54px 28px 42px;text-align:center}
-.timeline-ornament{margin-bottom:12px}
-.timeline-heading{margin:0 0 20px;color:var(--brown);font:600 24px/1 var(--serif);letter-spacing:.04em;text-transform:uppercase}
-.timeline-wrap{position:relative;min-height:420px;padding:8px 0 0}
-.timeline-line{position:absolute;top:18px;bottom:34px;left:50%;transform:translateX(-50%);border-left:3px dashed #111}
+.timeline-section{padding:24px 28px 20px;text-align:center}
+.timeline-ornament{margin-bottom:7px}
+.timeline-heading{margin:0 0 8px;color:var(--brown);font:600 18px/1 var(--serif);letter-spacing:.03em;text-transform:uppercase}
+.timeline-wrap{position:relative;min-height:270px;padding:0}
+.timeline-line{position:absolute;top:12px;bottom:20px;left:50%;transform:translateX(-50%);border-left:2px dashed #111}
 .timeline-item{position:absolute;width:47%;text-align:left}
 .timeline-item.right{text-align:right;right:0}
 .timeline-item.left{left:0}
-.timeline-item.item-1{top:14px}
-.timeline-item.item-2{top:152px}
-.timeline-item.item-3{top:290px}
-.timeline-time{margin:0 0 4px;font:500 19px/1 var(--serif);color:#161310}
-.timeline-label{margin:0;color:var(--brown);font:500 27px/.96 var(--serif);letter-spacing:-.02em}
-.timeline-connector{position:absolute;top:18px;height:0;border-top:3px dashed #111;width:72px}
-.timeline-item.left .timeline-connector{right:-76px}
-.timeline-item.right .timeline-connector{left:-76px}
-.timeline-icon{position:absolute;color:#9f9a94;line-height:1}
-.rings-icon{left:14px;top:78px;font-size:56px;letter-spacing:-12px;transform:rotate(18deg)}
-.polaroid-icon{right:14px;top:60px;font-size:52px;letter-spacing:-16px;transform:rotate(7deg)}
-.plate-icon{left:8px;top:80px;font-size:58px;border:2px solid #9f9a94;border-radius:50%;width:62px;height:62px;display:grid;place-items:center}
-.plate-icon::before,.plate-icon::after{content:"";position:absolute;top:6px;bottom:6px;width:2px;background:#9f9a94}
-.plate-icon::before{left:-10px}.plate-icon::after{right:-10px}
+.timeline-item.item-1{top:6px}
+.timeline-item.item-2{top:91px}
+.timeline-item.item-3{top:176px}
+.timeline-time{margin:0 0 2px;font:500 12px/1 var(--serif);color:#161310}
+.timeline-label{margin:0;color:var(--brown);font:500 18px/.98 var(--serif);letter-spacing:-.01em}
+.timeline-connector{position:absolute;top:12px;height:0;border-top:2px dashed #111;width:41px}
+.timeline-item.left .timeline-connector{right:-45px}
+.timeline-item.right .timeline-connector{left:-45px}
+.timeline-icon{position:absolute;color:#9f9a94;line-height:1;opacity:.9}
+.rings-icon{left:22px;top:43px;font-size:31px;letter-spacing:-7px;transform:rotate(18deg)}
+.polaroid-icon{right:21px;top:40px;font-size:30px;letter-spacing:-9px;transform:rotate(7deg)}
+.plate-icon{left:20px;top:43px;font-size:30px;border:1.4px solid #9f9a94;border-radius:50%;width:36px;height:36px;display:grid;place-items:center}
+.plate-icon::before,.plate-icon::after{content:"";position:absolute;top:4px;bottom:4px;width:1.4px;background:#9f9a94}
+.plate-icon::before{left:-7px}.plate-icon::after{right:-7px}
 
 /* =========================================================
    RSVP only (đã bỏ phần gửi mừng cưới)
@@ -441,23 +441,27 @@ footer{padding:14px;text-align:center;background:#fbfaf7;font:500 8px/1 var(--se
   opacity:0;
   will-change:opacity,transform,filter;
   transition-property:opacity,transform,filter;
-  transition-duration:1.02s;
+  transition-duration:.9s;
+  transition-delay:var(--reveal-delay,0s);
   transition-timing-function:cubic-bezier(.16,1,.3,1);
 }
-[data-reveal="up"]{transform:translateY(30px)}
-[data-reveal="zoom"]{transform:translateY(30px) scale(.84);filter:blur(1.2px)}
-[data-reveal="left"]{transform:translateX(-92%);opacity:.2}
-[data-reveal="right"]{transform:translateX(92%);opacity:.2}
-[data-reveal="left"],[data-reveal="right"]{transition-duration:1.18s}
+[data-reveal="up"]{transform:translateY(20px)}
+[data-reveal="zoom"]{transform:translateY(18px) scale(.92);filter:blur(.5px)}
+[data-reveal="left-soft"]{transform:translateX(-52px);opacity:0}
+[data-reveal="right-soft"]{transform:translateX(52px);opacity:0}
 [data-reveal].is-visible{opacity:1;transform:none;filter:none}
 
-/* oval image nở nhẹ lên khi vào khung nhìn */
-.oval-photo[data-reveal="zoom"],.round-photo[data-reveal="zoom"]{
-  transition-duration:1.15s;
-}
+.oval-photo[data-reveal="zoom"],.round-photo[data-reveal="zoom"]{transition-duration:1.05s}
 
-/* pill tên trong video trượt từ mép màn hình vào */
-.name-pill[data-reveal]{will-change:transform,opacity}
+/* Tên chạy từ hai mép vào đúng vị trí, observer nằm trên section nên không bị mất tên */
+.profile-name-pill{
+  opacity:0;
+  will-change:transform,opacity;
+  transition:transform 1.08s cubic-bezier(.16,1,.3,1),opacity .38s ease;
+}
+.groom-section .profile-name-pill{transform:translateX(-120%)}
+.bride-section .profile-name-pill{transform:translateX(120%)}
+.profile-section.profile-in .profile-name-pill{transform:translateX(0);opacity:1}
 
 .intro-seq{opacity:0;transform:translateY(20px);transition:opacity .86s cubic-bezier(.16,1,.3,1),transform .86s cubic-bezier(.16,1,.3,1)}
 body.invitation-opened .intro-seq{opacity:1;transform:none}
@@ -466,32 +470,311 @@ body.invitation-opened .intro-2{transition-delay:.26s}
 body.invitation-opened .intro-3{transition-delay:.44s}
 body.invitation-opened .intro-4{transition-delay:.60s}
 
+
+/* =========================================================
+   V7 — TỈ LỆ FONT / KHOẢNG CÁCH THEO ẢNH THAM CHIẾU HIWEDDING
+   ========================================================= */
+.floating-control{width:56px;height:56px;border-width:2px;background:rgba(255,255,255,.9)}
+.music-float{left:max(15px,calc(50% - 203px));bottom:22px;font-size:29px}
+.top-float{right:max(15px,calc(50% - 203px));bottom:22px;font:600 38px/1 var(--serif)}
+
+.hero-template{min-height:1120px;padding:76px 25px 88px}
+.save-date{gap:8px;margin-bottom:34px;font:500 42px/.95 var(--serif);letter-spacing:-.045em}
+.save-date em{margin:0 -13px 0 -15px;font:400 51px/.82 var(--script);transform:rotate(-5deg) translateY(3px)}
+.hero-photo-wrap{width:88%;margin-bottom:38px;border-radius:30px}
+.couple-line{margin-bottom:42px;font:500 28px/1.04 var(--serif);letter-spacing:-.02em}
+.serif-amp{margin:0 8px;font-size:.82em}
+.date-layout{width:92%;margin-bottom:42px}
+.weekday{margin-bottom:7px;font:500 17px/1.1 var(--serif);letter-spacing:.03em}
+.date-row{grid-template-columns:1fr 92px 1fr;gap:10px}
+.date-side{min-height:43px;font:600 16px/1 var(--serif)}
+.date-day{font:500 64px/.82 var(--serif)}
+.date-year{margin-top:12px;font:500 16px/1.25 var(--serif)}
+.round-photo{width:80%;margin-bottom:24px}
+.mini-player{width:88%}
+.player-title{font-size:14px}
+.player-time{font-size:10px}
+.player-actions{gap:18px}
+.player-actions button{font-size:18px}
+#inlinePlay{font-size:22px}
+
+.profile-section{padding:58px 20px 36px}
+.oval-photo{width:72%;margin-bottom:28px;padding:7px;border-width:1.5px}
+.family-copy{margin-bottom:42px}
+.profile-section .small-heading{margin-bottom:13px;font:500 20px/1.15 var(--sans);letter-spacing:.02em}
+.parent-line{margin:3px 0;font:650 18px/1.28 var(--sans)}
+.micro-copy{margin-top:11px;font:400 15px/1.45 var(--sans);color:#5f5b56}
+.name-pill{width:118%;min-height:108px;padding:17px 38px 20px;border-width:1.5px}
+.name-pill span{font:400 16px/1.1 var(--sans);color:#5f5b57}
+.name-pill strong{margin-top:12px;font:500 40px/.96 var(--serif);letter-spacing:-.025em}
+.pill-right{margin-left:-18%;border-radius:0 58px 58px 0}
+.pill-left{margin-left:0;border-radius:58px 0 0 58px}
+
+.invitation-section{padding:80px 24px 78px}
+.ornament-line{gap:11px;margin-bottom:26px}
+.ornament-line::before,.ornament-line::after{width:62px}
+.ornament-line span{font-size:18px}
+.ornament-line.bottom{margin:29px auto 34px}
+.rings-mark{height:73px;font-size:48px}
+.invite-copy{max-width:390px;margin:16px auto 32px;font:400 17px/1.55 var(--sans)}
+.ceremony-title{font:500 36px/1.05 var(--serif);letter-spacing:.04em}
+.ceremony-date{margin:12px 0 8px;font:650 43px/.98 var(--sans);letter-spacing:.01em}
+.lunar{margin:8px auto;font:400 italic 16px/1.42 var(--sans)}
+.ceremony-time-long{margin-top:17px;font:400 17px/1.3 var(--sans)}
+
+.event-card{width:98%;padding:31px 22px 27px;border-width:1.5px;border-radius:34px;box-shadow:0 10px 18px rgba(27,25,22,.18)}
+.event-card-title{margin-bottom:14px;font:500 29px/1.05 var(--serif);letter-spacing:.035em}
+.event-card-place{margin-bottom:12px;font:400 18px/1.15 var(--serif)}
+.event-card-time{margin-bottom:22px;font:400 21px/1.15 var(--sans)}
+.event-date-grid{grid-template-columns:1fr 110px 1fr;gap:10px}
+.event-date-grid>span{padding:12px 0;font:400 17px/1.2 var(--serif)}
+.event-date-grid strong{font:650 60px/.82 var(--serif)}
+.event-card .lunar{margin-top:13px;font-size:15px}
+
+.timeline-section{padding:46px 23px 34px}
+.timeline-ornament{margin-bottom:13px}
+.timeline-heading{margin-bottom:22px;font:600 27px/1 var(--serif);letter-spacing:.035em}
+.timeline-wrap{min-height:355px}
+.timeline-line{top:18px;bottom:28px;border-left-width:2.5px}
+.timeline-item.item-1{top:12px}
+.timeline-item.item-2{top:125px}
+.timeline-item.item-3{top:238px}
+.timeline-time{margin-bottom:6px;font:500 18px/1 var(--serif)}
+.timeline-label{font:500 27px/.98 var(--serif)}
+.timeline-connector{top:18px;width:55px;border-top-width:2.5px}
+.timeline-item.left .timeline-connector{right:-60px}
+.timeline-item.right .timeline-connector{left:-60px}
+.rings-icon{left:15px;top:70px;font-size:43px}
+.polaroid-icon{right:14px;top:64px;font-size:42px}
+.plate-icon{left:14px;top:67px;width:48px;height:48px;font-size:38px}
+
+.venue-section{padding:12px 24px 58px;text-align:center}
+.route-arrow{width:205px;height:165px;margin:-7px auto 8px -2px;opacity:0;transform:translateX(-18px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.route-arrow.is-visible{opacity:1;transform:none}
+.route-arrow svg{display:block;width:100%;height:100%;overflow:visible}
+.route-path{stroke-dashoffset:38;transition:stroke-dashoffset 1.25s cubic-bezier(.22,.61,.36,1)}
+.route-arrow.is-visible .route-path{stroke-dashoffset:0}
+.route-heart{fill:#c6412e;font:700 15px/1 var(--sans);transform:rotate(-17deg);transform-origin:48px 96px}
+.venue-section .small-heading{margin:0 0 14px;font:500 19px/1.2 var(--sans);letter-spacing:.025em}
+.venue-heading{max-width:385px;margin-bottom:13px;font:600 28px/1.14 var(--serif)}
+.venue-address{max-width:385px;margin-bottom:22px;font:400 16px/1.48 var(--sans)}
+.brown-button{min-height:47px;padding:0 27px;font:500 15px/1 var(--sans)}
+.map-frame{height:330px;margin-top:22px}
+
+.calendar-gallery-section{padding:46px 24px 65px}
+.quad-gallery{gap:6px;margin-bottom:35px;border-radius:22px}
+.quad-gallery img{height:178px}
+.month-calendar{width:96%;margin-bottom:40px;padding:24px 22px 20px;border-radius:22px}
+.month-calendar h3{margin-bottom:21px;font-size:17px}
+.calendar-week-head{font-size:11px}
+.calendar-days span{min-height:33px;font-size:11px}
+.calendar-days .wedding-day::before{font-size:38px}
+.quote-block{max-width:390px;margin-bottom:37px;font:400 15px/1.62 var(--sans)}
+.signature-block span{font-size:68px}
+.signature-block em{margin:12px 0;font-size:22px}
+.memories-heading{margin-top:40px;font-size:27px}
+
+.memories-section{padding-bottom:64px}
+.memory-grid-a{padding-left:42px}
+.memory-grid-a .memory-tall{height:350px}
+.memory-grid-a img:not(.memory-tall){height:173px}
+.memory-caption{margin:22px auto 39px;max-width:400px;font:400 15px/1.58 var(--sans)}
+.memory-wide{height:310px}
+.memory-grid-b img{height:220px}
+
+.countdown-section{padding:76px 22px 85px}
+.tiny-dots{font-size:24px;margin-bottom:16px}
+.countdown-script{margin-bottom:40px;font:400 49px/1 var(--script)}
+.countdown{width:98%;gap:9px}
+.countdown strong{font:500 24px/1 var(--serif)}
+.countdown span{margin-top:5px;font:400 11px/1 var(--sans)}
+.poem{margin-top:44px;max-width:390px;font:400 15px/1.65 var(--sans)}
+
+.rsvp-section{padding:62px 24px 38px}
+.rsvp-script{margin-bottom:26px;font:400 48px/1 var(--script)}
+.rsvp-form>input{height:48px;padding:0 17px;margin-bottom:14px}
+.rsvp-form textarea{min-height:152px;padding:18px 17px;margin-bottom:20px}
+.rsvp-form input[type="text"],.rsvp-form input:not([type]),.rsvp-form textarea,.rsvp-form>input,.rsvp-form>textarea{font:400 14px/1.4 var(--sans);border-radius:25px}
+.rsvp-form legend{margin-bottom:12px;font:400 14px/1.25 var(--sans)}
+.rsvp-form fieldset label{min-height:45px;margin-bottom:10px;padding:0 14px;border-radius:23px;font:400 14px/1.25 var(--sans)}
+.submit-button{width:166px;height:43px;margin-top:18px;font-size:13px}
+.form-status{font-size:12px}
+
+.thankyou-section{height:560px}
+.thankyou-copy{bottom:78px}
+.thankyou-copy h2{margin-bottom:10px;font-size:69px}
+.thankyou-copy p{font-size:15px}
+
+[data-reveal]{transition-duration:1.06s;transition-timing-function:cubic-bezier(.12,.78,.22,1)}
+[data-reveal="left-soft"]{transform:translateX(-105px)}
+[data-reveal="right-soft"]{transform:translateX(105px)}
+[data-reveal="up"]{transform:translateY(30px)}
+[data-reveal="zoom"]{transform:translateY(24px) scale(.9)}
+[data-reveal="draw"]{opacity:0}
+[data-reveal="draw"].is-visible{opacity:1}
+.profile-name-pill{transition-duration:1.28s}
+.groom-section .profile-name-pill{transform:translateX(-132%)}
+.bride-section .profile-name-pill{transform:translateX(132%)}
+
+
+
+/* =========================================================
+   V8 — MUSIC PLAYER giống mẫu hơn
+   ========================================================= */
+.record-photo{
+  position:relative;
+  overflow:visible;
+}
+.record-photo::before{
+  content:"";
+  position:absolute;
+  inset:-10px;
+  border:1.6px solid rgba(174,170,164,.8);
+  border-radius:50%;
+}
+.record-photo::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:18px;
+  height:18px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(162,157,151,.9);
+  box-shadow:0 0 0 5px rgba(255,255,255,.4);
+}
+.record-photo img{
+  transform-origin:center center;
+}
+.record-photo.is-spinning img{
+  animation:recordSpin 14s linear infinite;
+}
+@keyframes recordSpin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+.mini-player{
+  width:92%;
+  margin:0 auto;
+}
+.player-title{
+  margin:0 0 13px;
+  color:#171512;
+  font:600 15px/1 var(--sans);
+  letter-spacing:.02em;
+}
+.player-range{
+  -webkit-appearance:none;
+  appearance:none;
+  width:100%;
+  height:6px;
+  border-radius:999px;
+  background:#d9d6d1;
+  outline:none;
+}
+.player-range::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:#d9d6d1}
+.player-range::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:22px;
+  height:22px;
+  margin-top:-8px;
+  border-radius:50%;
+  background:#fff;
+  border:1.4px solid #c7c2bc;
+  box-shadow:0 2px 5px rgba(0,0,0,.12);
+}
+.player-range::-moz-range-track{height:6px;border:none;border-radius:999px;background:#d9d6d1}
+.player-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:1.4px solid #c7c2bc;box-shadow:0 2px 5px rgba(0,0,0,.12)}
+.player-time{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  margin-top:11px;
+  color:#171512;
+  font:500 12px/1 var(--sans);
+}
+.player-heart{font-size:11px;transform:translateY(-1px)}
+.player-actions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-top:16px;
+}
+.player-icon-btn{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#111;
+  cursor:pointer;
+}
+.player-icon-btn svg{
+  width:24px;
+  height:24px;
+  display:block;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.player-icon-btn.is-plain svg path:only-child{fill:currentColor;stroke:none}
+.player-icon-btn.is-play{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  box-shadow:0 8px 16px rgba(0,0,0,.15);
+}
+.player-icon-btn.is-play svg{width:27px;height:27px}
+.player-icon-btn .pause-icon{display:none}
+.mini-player.playing .player-icon-btn.is-play .play-icon{display:none}
+.mini-player.playing .player-icon-btn.is-play .pause-icon{display:block}
+
 @media (min-width:431px){
   body{padding:18px 0}
   .site-shell{border-radius:20px}
 }
 
 @media (max-width:390px){
-  .hero-template{padding-left:20px;padding-right:20px}
-  .save-date{font-size:30px}
-  .hero-photo-wrap{width:88%}
-  .profile-section,.invitation-section,.timeline-section,.venue-section,.calendar-gallery-section,.countdown-section,.rsvp-section{padding-left:22px;padding-right:22px}
-  .music-float{left:10px}.top-float{right:10px}
-}
-
-
-@media (max-width:390px){
-  .timeline-wrap{min-height:390px}
-  .timeline-heading{font-size:22px}
+  .hero-template{padding-left:18px;padding-right:18px}
+  .save-date{font-size:38px}
+  .save-date em{font-size:47px}
+  .couple-line{font-size:25px}
+  .profile-section,.invitation-section,.timeline-section,.venue-section,.calendar-gallery-section,.countdown-section,.rsvp-section{padding-left:18px;padding-right:18px}
+  .oval-photo{width:74%}
+  .name-pill strong{font-size:36px}
+  .ceremony-title{font-size:33px}
+  .ceremony-date{font-size:39px}
+  .event-card-title{font-size:26px}
+  .timeline-heading{font-size:25px}
   .timeline-label{font-size:24px}
-  .timeline-time{font-size:17px}
-  .timeline-connector{width:62px}
-  .timeline-item.left .timeline-connector{right:-66px}
-  .timeline-item.right .timeline-connector{left:-66px}
+  .timeline-wrap{min-height:335px}
+  .venue-heading{font-size:25px}
+  .music-float{left:10px}
+  .top-float{right:10px}
+  .mini-player{width:94%}
+  .player-actions{gap:10px}
+  .player-icon-btn{width:32px;height:32px}
+  .player-icon-btn.is-play{width:52px;height:52px}
 }
+
+
+
+
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
-  [data-reveal],.intro-seq{opacity:1!important;transform:none!important}
+  [data-reveal],.intro-seq,.profile-name-pill{opacity:1!important;transform:none!important}
 }
