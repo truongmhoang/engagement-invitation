@@ -22,6 +22,9 @@ setText("[data-groom-display]", cfg.groomDisplay || cfg.groom);
 setText("[data-bride-display]", cfg.brideDisplay || cfg.bride);
 setText("[data-groom-signature]", cfg.groomSignature || cfg.groomDisplay || cfg.groom);
 setText("[data-bride-signature]", cfg.brideSignature || cfg.brideDisplay || cfg.bride);
+setText("[data-groom-role]", cfg.groomRole || "Út Nam");
+setText("[data-bride-role]", cfg.brideRole || "Út Nữ");
+setText("[data-event-time-short]", cfg.eventTimeShort || cfg.ceremonyTimeShort);
 setText("[data-ceremony-time-short]", cfg.ceremonyTimeShort);
 setText("[data-ceremony-time-long]", cfg.ceremonyTimeLong);
 setText("[data-weekday]", cfg.weekday);
@@ -268,37 +271,127 @@ if("IntersectionObserver" in window){
 backToTop?.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
 
 /* =========================================================
-   RSVP
+   RSVP -> GOOGLE SHEETS
    ========================================================= */
 const form = document.getElementById("rsvpForm");
 const statusEl = document.getElementById("rsvpStatus");
+const destinationEl = document.getElementById("rsvpDestination");
+const guestCountEl = document.getElementById("guestCount");
+const submittedAtEl = document.getElementById("rsvpSubmittedAt");
+const invitationUrlEl = document.getElementById("rsvpInvitationUrl");
+const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+const submitButton = form?.querySelector('button[type="submit"]');
+
+function updateGuestRequirement(){
+  if(!guestCountEl) return;
+  const attendance = form?.querySelector('input[name="attendance"]:checked')?.value || "";
+  const isAttending = attendance === "Có";
+
+  guestCountEl.required = isAttending;
+  guestCountEl.disabled = attendance === "Không";
+
+  if(attendance === "Không"){
+    guestCountEl.value = "";
+  }
+}
+
+attendanceRadios.forEach(radio => radio.addEventListener("change", updateGuestRequirement));
+updateGuestRequirement();
+
+function setSubmitState(isSubmitting){
+  if(!submitButton) return;
+  submitButton.disabled = isSubmitting;
+  submitButton.textContent = isSubmitting ? "ĐANG GỬI..." : "GỬI NGAY";
+  submitButton.classList.toggle("is-loading", isSubmitting);
+}
+
+function fillSubmissionMetadata(){
+  if(submittedAtEl) submittedAtEl.value = new Date().toISOString();
+  if(invitationUrlEl) invitationUrlEl.value = window.location.href;
+}
+
+function getGoogleSheetsEndpoint(){
+  return String(cfg.googleSheetsEndpoint || "").trim();
+}
+
+async function submitToGoogleSheets(formData){
+  const endpoint = getGoogleSheetsEndpoint();
+  if(!endpoint) throw new Error("GOOGLE_SHEETS_ENDPOINT_MISSING");
+
+  // Apps Script Web App thường không trả CORS headers cho static website.
+  // mode:no-cors vẫn gửi đầy đủ POST data sang Google Sheets mà không chuyển trang.
+  await fetch(endpoint, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  });
+}
+
+async function submitToLegacyEndpoint(formData){
+  const endpoint = String(cfg.rsvpEndpoint || "").trim();
+  if(!endpoint) throw new Error("LEGACY_ENDPOINT_MISSING");
+
+  const response = await fetch(endpoint, {
+    method: "POST",
+    body: formData,
+    headers: {Accept: "application/json"}
+  });
+
+  if(!response.ok) throw new Error("LEGACY_ENDPOINT_FAILED");
+}
+
+if(destinationEl){
+  destinationEl.textContent = getGoogleSheetsEndpoint()
+    ? "Thông tin xác nhận sẽ được lưu vào Google Sheets."
+    : "Chưa kết nối Google Sheets. Hãy dán URL Apps Script Web App vào config.js.";
+}
 
 if(form && statusEl){
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    statusEl.textContent = "Đang gửi...";
-    const endpoint = (cfg.rsvpEndpoint || "").trim();
 
-    if(!endpoint){
-      statusEl.textContent = "Form đang ở chế độ mẫu. Hãy dán endpoint Formspree vào js/config.js.";
-      return;
-    }
+    updateGuestRequirement();
+    if(!form.reportValidity()) return;
+
+    fillSubmissionMetadata();
+    statusEl.textContent = "Đang gửi xác nhận...";
+    statusEl.classList.remove("success", "error");
+    setSubmitState(true);
+
+    const data = new FormData(form);
+    data.set("guestCount", guestCountEl?.disabled ? "0" : (guestCountEl?.value || ""));
+    data.set("groom", cfg.groomDisplay || cfg.groom || "");
+    data.set("bride", cfg.brideDisplay || cfg.bride || "");
+    data.set("eventDate", cfg.eventDate || cfg.dateText || "");
+    data.set("eventTime", cfg.eventTimeShort || cfg.ceremonyTimeShort || "");
+    data.set("venue", cfg.venueName || "");
+    data.set("sheetTab", cfg.googleSheetsTabName || "RSVP");
 
     try{
-      const response = await fetch(endpoint,{
-        method:"POST",
-        body:new FormData(form),
-        headers:{Accept:"application/json"}
-      });
+      if(getGoogleSheetsEndpoint()){
+        await submitToGoogleSheets(data);
+      }else if(String(cfg.rsvpEndpoint || "").trim()){
+        await submitToLegacyEndpoint(data);
+      }else{
+        throw new Error("NO_RSVP_ENDPOINT");
+      }
 
-      if(response.ok){
-        form.reset();
-        statusEl.textContent = "Đã gửi xác nhận. Cảm ơn bạn! ♡";
+      statusEl.textContent = "Đã gửi xác nhận. Cảm ơn bạn! ♡";
+      statusEl.classList.add("success");
+      form.reset();
+      updateGuestRequirement();
+      fillSubmissionMetadata();
+    }catch(err){
+      console.error(err);
+      if(err?.message === "GOOGLE_SHEETS_ENDPOINT_MISSING" || err?.message === "NO_RSVP_ENDPOINT"){
+        statusEl.textContent = "Chưa kết nối Google Sheets. Hãy dán URL Apps Script Web App vào config.js.";
       }else{
         statusEl.textContent = "Chưa gửi được. Vui lòng thử lại.";
       }
-    }catch(err){
-      statusEl.textContent = "Lỗi kết nối. Vui lòng thử lại.";
+      statusEl.classList.add("error");
+    }finally{
+      setSubmitState(false);
     }
   });
 }
+

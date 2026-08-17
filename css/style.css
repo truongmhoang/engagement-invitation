@@ -741,6 +741,93 @@ body.invitation-opened .intro-4{transition-delay:.60s}
 .mini-player.playing .player-icon-btn.is-play .play-icon{display:none}
 .mini-player.playing .player-icon-btn.is-play .pause-icon{display:block}
 
+
+
+/* =========================================================
+   V9 — FINAL FIXES theo feedback
+   ========================================================= */
+.save-date{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:38px;
+  min-height:66px;
+  margin:0 auto 34px;
+  letter-spacing:-.03em;
+}
+.save-date .save-word{display:block; position:relative; z-index:1;}
+.save-date em{
+  position:absolute;
+  left:50%;
+  top:8px;
+  margin:0;
+  transform:translateX(-50%) rotate(-6deg);
+  z-index:2;
+}
+
+/* hero name animation */
+.couple-line span,.couple-line .serif-amp{display:inline-block;opacity:0;transition:transform .95s cubic-bezier(.16,1,.3,1),opacity .55s ease}
+.couple-line span:first-child{transform:translateX(-48px)}
+.couple-line .serif-amp{transform:translateY(18px) scale(.9)}
+.couple-line span:last-child{transform:translateX(48px)}
+body.invitation-opened .couple-line span,body.invitation-opened .couple-line .serif-amp{opacity:1;transform:none}
+body.invitation-opened .couple-line span:first-child{transition-delay:.45s}
+body.invitation-opened .couple-line .serif-amp{transition-delay:.58s}
+body.invitation-opened .couple-line span:last-child{transition-delay:.68s}
+
+/* music disc */
+.record-photo{position:relative;overflow:visible}
+.record-disc{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;background:#ece8e2}
+.record-disc img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.record-photo::before{inset:-10px}
+.record-photo.is-spinning .record-disc{animation:recordSpin 18s linear infinite}
+.record-photo.is-spinning img{animation:none}
+
+/* profile pill effects */
+.profile-name-pill{overflow:hidden}
+.profile-name-pill span,.profile-name-pill strong{display:block;opacity:0;transform:translateY(14px);transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .45s ease}
+.profile-section.profile-in .profile-name-pill span,.profile-section.profile-in .profile-name-pill strong{opacity:1;transform:none}
+.profile-section.profile-in .profile-name-pill span{transition-delay:.22s}
+.profile-section.profile-in .profile-name-pill strong{transition-delay:.30s}
+.groom-section .profile-name-pill{transform:translateX(-115%)}
+.bride-section .profile-name-pill{transform:translateX(115%)}
+
+/* timeline nhỏ lại */
+.timeline-section{padding:28px 24px 14px}
+.timeline-heading{margin-bottom:16px;font-size:24px}
+.timeline-wrap{min-height:285px}
+.timeline-line{top:16px;bottom:16px;border-left-width:2px}
+.timeline-item{width:44%}
+.timeline-item.item-1{top:6px}
+.timeline-item.item-2{top:100px}
+.timeline-item.item-3{top:194px}
+.timeline-time{margin-bottom:4px;font-size:15px}
+.timeline-label{font-size:22px;line-height:1}
+.timeline-connector{top:14px;width:48px;border-top-width:2px}
+.timeline-item.left .timeline-connector{right:-52px}
+.timeline-item.right .timeline-connector{left:-52px}
+.rings-icon{left:12px;top:52px;font-size:37px}
+.polaroid-icon{right:12px;top:50px;font-size:35px}
+.plate-icon{left:12px;top:55px;width:40px;height:40px;font-size:30px}
+
+/* arrow connector like feedback */
+.venue-section{padding:0 24px 58px;text-align:center}
+.route-arrow{width:120px;height:235px;margin:-8px auto 6px;opacity:0;transform:translateY(-6px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.route-arrow.is-visible{opacity:1;transform:none}
+.route-arrow svg{width:100%;height:100%;display:block;overflow:visible}
+.route-path{stroke-dashoffset:56;transition:stroke-dashoffset 1.25s cubic-bezier(.22,.61,.36,1)}
+.route-arrow.is-visible .route-path{stroke-dashoffset:0}
+.route-heart{fill:#d14a36;font:700 15px/1 var(--sans)}
+
+/* RSVP extra select */
+.guest-select-wrap{margin:0 0 16px}
+.guest-select-wrap label{display:block;margin:0 0 8px;font:400 14px/1.25 var(--sans);color:#8c8985}
+.guest-select-shell{position:relative}
+.guest-select-shell::after{content:"▾";position:absolute;right:18px;top:50%;transform:translateY(-50%);font:500 15px/1 var(--sans);color:#5c5954;pointer-events:none}
+.guest-select-shell select{width:100%;height:48px;padding:0 48px 0 17px;border:1px solid #868582;border-radius:25px;background:transparent;color:#24211f;outline:none;font:400 14px/1.4 var(--sans);appearance:none;-webkit-appearance:none}
+footer{display:none}
+
 @media (min-width:431px){
   body{padding:18px 0}
   .site-shell{border-radius:20px}
@@ -748,8 +835,8 @@ body.invitation-opened .intro-4{transition-delay:.60s}
 
 @media (max-width:390px){
   .hero-template{padding-left:18px;padding-right:18px}
-  .save-date{font-size:38px}
-  .save-date em{font-size:47px}
+  .save-date{font-size:38px;gap:24px;min-height:60px}
+  .save-date em{font-size:47px;top:8px}
   .couple-line{font-size:25px}
   .profile-section,.invitation-section,.timeline-section,.venue-section,.calendar-gallery-section,.countdown-section,.rsvp-section{padding-left:18px;padding-right:18px}
   .oval-photo{width:74%}
@@ -772,6 +859,36 @@ body.invitation-opened .intro-4{transition-delay:.60s}
 
 
 
+
+
+/* =========================================================
+   V10 — GOOGLE SHEETS RSVP STATUS
+   ========================================================= */
+.guest-select-shell select:disabled{
+  opacity:.46;
+  cursor:not-allowed;
+  background:rgba(160,156,148,.06);
+}
+.submit-button:disabled{
+  opacity:.62;
+  cursor:wait;
+}
+.form-status{
+  min-height:20px;
+}
+.form-status.success{
+  color:#55705b;
+}
+.form-status.error{
+  color:#a14f47;
+}
+.rsvp-destination{
+  margin:9px auto 0;
+  max-width:330px;
+  text-align:center;
+  color:#98938c;
+  font:400 10px/1.45 var(--sans);
+}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

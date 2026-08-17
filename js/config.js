@@ -3,22 +3,24 @@ window.WEDDING_CONFIG = {
      1. TRANG MỞ THIỆP
      ========================================================= */
   openingTitle: "ENGAGEMENT INVITATION",
-  groom: "TRUONG MANH HOANG",
-  bride: "LƯƠNG THÚY LINH",
+  groom: "TRUONG HOANG",
+  bride: "LINH",
   dateText: "25 • 10 • 2026",
 
   /* Tên hiển thị bên trong thiệp (ngắn hơn để giống MAUTRANG) */
-  groomDisplay: "Mạnh Hoàng",
-  brideDisplay: "Thúy Linh",
-  groomSignature: "Hoàng",
+  groomDisplay: "Truong Hoang",
+  brideDisplay: "Linh",
+  groomSignature: "Truong",
   brideSignature: "Linh",
+  groomRole: "Út Nam",
+  brideRole: "Út Nữ",
 
   /* =========================================================
      2. NGÀY GIỜ
      ========================================================= */
-  weddingDate: "2026-10-25T12:00:00",
-  ceremonyTimeShort: "12:00",
-  ceremonyTimeLong: "Lúc 12 giờ 00 phút",
+  weddingDate: "2026-10-25T09:00:00",
+  ceremonyTimeShort: "9:00 AM",
+  ceremonyTimeLong: "Lúc 09 giờ 00 phút",
   weekday: "CHỦ NHẬT",
   weekdayTitle: "Chủ Nhật",
   day: "25",
@@ -46,6 +48,7 @@ window.WEDDING_CONFIG = {
   eventCardTitle: "TIỆC ĐÍNH HÔN",
   venueShort: "White Palace",
   venueName: "WHITE PALACE VÕ VĂN KIỆT",
+  eventTimeShort: "12:00 PM",
   venueAddress: "59 Đường Võ Văn Kiệt, Phường An Lạc, TP.HCM",
 
   /* Link mở Google Maps */
@@ -68,23 +71,36 @@ window.WEDDING_CONFIG = {
      6. TIMELINE
      ========================================================= */
   timelineTitle: "TIMELINE",
-  timeline1Time: "11:00",
+  timeline1Time: "11:00 AM",
   timeline1Label: "Đón khách",
-  timeline2Time: "11:30",
+  timeline2Time: "11:00 AM",
   timeline2Label: "Chụp hình",
-  timeline3Time: "12:00",
-  timeline3Label: "Vào tiệc",
+  timeline3Time: "12:00 PM",
+  timeline3Label: "Khai tiệc",
 
   /* =========================================================
      7. CHIA SẺ LINK
      ========================================================= */
-  shareTitle: "Mạnh Hoàng & Thúy Linh - Engagement Invitation",
-  shareDescription: "Trân trọng kính mời bạn đến chung vui cùng Mạnh Hoàng & Thúy Linh.",
+  shareTitle: "Truong Hoang & Linh - Engagement Invitation",
+  shareDescription: "Trân trọng kính mời bạn đến chung vui cùng Truong Hoang & Linh.",
   shareImage: "https://YOUR-DOMAIN.com/images/share.jpg",
 
   /* =========================================================
-     8. RSVP
-     Dán Formspree endpoint tại đây. Để trống = chế độ mẫu.
+     8. RSVP -> GOOGLE SHEETS
+
+     QUAN TRỌNG:
+     - Không dán link Google Sheet bình thường ở đây.
+     - Hãy mở Google Sheet -> Extensions -> Apps Script.
+     - Dán file google-apps-script.gs đi kèm, Deploy thành Web app.
+     - Sau đó dán URL Web app dạng:
+       https://script.google.com/macros/s/AKfycb.../exec
+       vào googleSheetsEndpoint bên dưới.
      ========================================================= */
+  googleSheetsEndpoint: "",
+
+  /* Tên trang tính (tab) mà Apps Script sẽ ghi dữ liệu vào. */
+  googleSheetsTabName: "RSVP",
+
+  /* Tùy chọn cũ: chỉ dùng nếu bạn vẫn muốn Formspree làm dự phòng. */
   rsvpEndpoint: ""
 };
