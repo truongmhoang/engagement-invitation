@@ -43,6 +43,13 @@ setText("[data-event-card-title]", cfg.eventCardTitle);
 setText("[data-venue-short]", cfg.venueShort);
 setText("[data-venue-name]", cfg.venueName);
 setText("[data-venue-address]", cfg.venueAddress);
+setText("[data-timeline-title]", cfg.timelineTitle);
+setText("[data-timeline1-time]", cfg.timeline1Time);
+setText("[data-timeline1-label]", cfg.timeline1Label);
+setText("[data-timeline2-time]", cfg.timeline2Time);
+setText("[data-timeline2-label]", cfg.timeline2Label);
+setText("[data-timeline3-time]", cfg.timeline3Time);
+setText("[data-timeline3-label]", cfg.timeline3Label);
 setText("[data-quote]", cfg.quote);
 setText("[data-memory-caption-1]", cfg.memoryCaption1);
 setText("[data-memory-caption-2]", cfg.memoryCaption2);
@@ -223,10 +230,9 @@ if("IntersectionObserver" in window){
         observer.unobserve(entry.target);
       }
     });
-  },{threshold:.14,rootMargin:"0px 0px -4% 0px"});
+  },{threshold:.22,rootMargin:"0px 0px -8% 0px"});
 
-  document.querySelectorAll("[data-reveal]").forEach((el,index) => {
-    el.style.transitionDelay = `${Math.min((index % 3) * 70,140)}ms`;
+  document.querySelectorAll("[data-reveal]").forEach(el => {
     observer.observe(el);
   });
 }else{

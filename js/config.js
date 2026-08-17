@@ -62,15 +62,28 @@ window.WEDDING_CONFIG = {
   memoryCaption2: "Chúng mình rất hân hạnh được mời bạn đến chung vui và chứng kiến khoảnh khắc thiêng liêng này.",
   countdownNote: "Một ngày để nhớ trọn đời,\nChúng mình chung bước, gọi mời yêu thương.\nCảm ơn vì đã đến cùng,\nChung vui hạnh phúc – kết vòng phu thê.",
 
+
+
   /* =========================================================
-     6. CHIA SẺ LINK
+     6. TIMELINE
+     ========================================================= */
+  timelineTitle: "TIMELINE",
+  timeline1Time: "11:00",
+  timeline1Label: "Đón khách",
+  timeline2Time: "11:30",
+  timeline2Label: "Chụp hình",
+  timeline3Time: "12:00",
+  timeline3Label: "Vào tiệc",
+
+  /* =========================================================
+     7. CHIA SẺ LINK
      ========================================================= */
   shareTitle: "Mạnh Hoàng & Thúy Linh - Engagement Invitation",
   shareDescription: "Trân trọng kính mời bạn đến chung vui cùng Mạnh Hoàng & Thúy Linh.",
   shareImage: "https://YOUR-DOMAIN.com/images/share.jpg",
 
   /* =========================================================
-     7. RSVP
+     8. RSVP
      Dán Formspree endpoint tại đây. Để trống = chế độ mẫu.
      ========================================================= */
   rsvpEndpoint: ""

@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italianno&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link id="mainStylesheet" rel="stylesheet" href="style.css" onerror="this.onerror=null;this.href='css/style.css'">
+  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=5" onerror="this.onerror=null;this.href='css/style.css?v=5'">
 </head>
 <body class="locked">
   <!-- =====================================================
@@ -106,7 +106,7 @@
         <p class="micro-copy" data-groom-address>TP Hồ Chí Minh</p>
       </div>
 
-      <div class="name-pill pill-right" data-reveal="right">
+      <div class="name-pill pill-right" data-reveal="left">
         <span>Chú Rể</span>
         <strong data-groom-display>Mạnh Hoàng</strong>
       </div>
@@ -125,7 +125,7 @@
         <p class="micro-copy" data-bride-address>TP Hồ Chí Minh</p>
       </div>
 
-      <div class="name-pill pill-left" data-reveal="left">
+      <div class="name-pill pill-left" data-reveal="right">
         <span>Cô Dâu</span>
         <strong data-bride-display>Thúy Linh</strong>
       </div>
@@ -157,7 +157,38 @@
       </div>
     </section>
 
-    <!-- 5 / ĐỊA ĐIỂM -->
+    <!-- 5 / TIMELINE -->
+    <section class="timeline-section floral-bg">
+      <div class="ornament-line timeline-ornament" data-reveal="up"><span>❦</span></div>
+      <h2 class="timeline-heading" data-reveal="up" data-timeline-title>TIMELINE</h2>
+
+      <div class="timeline-wrap" data-reveal="up">
+        <div class="timeline-line" aria-hidden="true"></div>
+
+        <div class="timeline-item left item-1">
+          <div class="timeline-connector" aria-hidden="true"></div>
+          <p class="timeline-time" data-timeline1-time>11:00</p>
+          <p class="timeline-label" data-timeline1-label>Đón khách</p>
+          <div class="timeline-icon rings-icon" aria-hidden="true">◎◎</div>
+        </div>
+
+        <div class="timeline-item right item-2">
+          <div class="timeline-connector" aria-hidden="true"></div>
+          <p class="timeline-time" data-timeline2-time>11:30</p>
+          <p class="timeline-label" data-timeline2-label>Chụp hình</p>
+          <div class="timeline-icon polaroid-icon" aria-hidden="true">▱▭</div>
+        </div>
+
+        <div class="timeline-item left item-3">
+          <div class="timeline-connector" aria-hidden="true"></div>
+          <p class="timeline-time" data-timeline3-time>12:00</p>
+          <p class="timeline-label" data-timeline3-label>Vào tiệc</p>
+          <div class="timeline-icon plate-icon" aria-hidden="true">◯</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 / ĐỊA ĐIỂM -->
     <section class="venue-section floral-bg">
       <div class="dotted-arrow" aria-hidden="true">⌁⌁⌁⌁➜</div>
       <p class="small-heading" data-reveal="up">ĐỊA ĐIỂM TỔ CHỨC</p>
@@ -169,7 +200,7 @@
       </div>
     </section>
 
-    <!-- 6 / COLLAGE + CALENDAR -->
+    <!-- 7 / COLLAGE + CALENDAR -->
     <section class="calendar-gallery-section floral-bg">
       <div class="quad-gallery" data-reveal="zoom">
         <img src="images/gallery-1.jpg" alt="Ảnh cưới 1" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
@@ -196,7 +227,7 @@
       <h2 class="memories-heading" data-reveal="up">OUR MEMORIES</h2>
     </section>
 
-    <!-- 7 / OUR MEMORIES -->
+    <!-- 8 / OUR MEMORIES -->
     <section class="memories-section floral-bg">
       <div class="memory-grid memory-grid-a" data-reveal="up">
         <img class="memory-tall" src="images/gallery-5.jpg" alt="Kỷ niệm 1" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
@@ -218,7 +249,7 @@
       </div>
     </section>
 
-    <!-- 8 / COUNTDOWN -->
+    <!-- 9 / COUNTDOWN -->
     <section class="countdown-section floral-bg">
       <div class="tiny-dots" aria-hidden="true">• • • •</div>
       <p class="countdown-script" data-reveal="up">Đếm ngược thời gian</p>
@@ -231,27 +262,9 @@
       <p class="poem" data-countdown-note data-reveal="up">Một ngày để nhớ trọn đời,<br>Chúng mình chung bước, gọi mời yêu thương.<br>Cảm ơn vì đã đến cùng,<br>Chung vui hạnh phúc – kết vòng phu thê.</p>
     </section>
 
-    <!-- 9 / MỪNG CƯỚI + RSVP -->
+    <!-- 10 / RSVP -->
     <section class="rsvp-section floral-bg">
       <div class="ornament-line" data-reveal="up"><span>❦</span></div>
-      <p class="gift-script" data-reveal="up">Gửi mừng cưới</p>
-      <p class="gift-copy" data-reveal="up">Cảm ơn tất cả tình cảm<br>của cô dì chú bác, bạn bè và anh chị em</p>
-
-      <div class="gift-people" data-reveal="up">
-        <div class="gift-person">
-          <img src="images/gallery-2.jpg" alt="Chú rể" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
-          <span>Chú Rể</span>
-          <strong data-groom-display>Mạnh Hoàng</strong>
-          <button class="gift-button" type="button" data-gift-button="groom">Mừng cưới</button>
-        </div>
-        <div class="gift-person">
-          <img src="images/gallery-3.jpg" alt="Cô dâu" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
-          <span>Cô Dâu</span>
-          <strong data-bride-display>Thúy Linh</strong>
-          <button class="gift-button" type="button" data-gift-button="bride">Mừng cưới</button>
-        </div>
-      </div>
-
       <p class="rsvp-script" data-reveal="up">Xác nhận tham dự</p>
       <form id="rsvpForm" class="rsvp-form" data-reveal="up">
         <input name="name" required placeholder="Tên của bạn là?" aria-label="Tên của bạn">
@@ -266,7 +279,7 @@
       </form>
     </section>
 
-    <!-- 10 / THANK YOU -->
+    <!-- 11 / THANK YOU -->
     <section class="thankyou-section">
       <img src="images/gallery-6.jpg" alt="Ảnh cảm ơn" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
       <div class="thankyou-overlay"></div>
@@ -301,8 +314,8 @@
           next();
         });
       }
-      loadFirst(["config.js", "js/config.js"])
-        .then(function(){ return loadFirst(["script.js", "js/script.js"]); })
+      loadFirst(["config.js?v=5", "js/config.js?v=5"])
+        .then(function(){ return loadFirst(["script.js?v=5", "js/script.js?v=5"]); })
         .catch(function(err){ console.error(err); });
     })();
   </script>
