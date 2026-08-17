@@ -3,15 +3,15 @@ window.WEDDING_CONFIG = {
      1. TRANG MỞ THIỆP
      ========================================================= */
   openingTitle: "ENGAGEMENT INVITATION",
-  groom: "TRUONG HOANG",
-  bride: "LINH",
+  groom: "Truong Manh Hoang",
+  bride: "Lương Thuý Linh",
   dateText: "25 • 10 • 2026",
 
   /* Tên hiển thị bên trong thiệp (ngắn hơn để giống MAUTRANG) */
   groomDisplay: "Truong Hoang",
-  brideDisplay: "Linh",
+  brideDisplay: "Thuý Linh",
   groomSignature: "Truong",
-  brideSignature: "Linh",
+  brideSignature: "Thuý Linh",
   groomRole: "Út Nam",
   brideRole: "Út Nữ",
 
@@ -20,6 +20,7 @@ window.WEDDING_CONFIG = {
      ========================================================= */
   weddingDate: "2026-10-25T09:00:00",
   ceremonyTimeShort: "9:00 AM",
+  heroTimeShort: "12:00 PM",
   ceremonyTimeLong: "Lúc 09 giờ 00 phút",
   weekday: "CHỦ NHẬT",
   weekdayTitle: "Chủ Nhật",
@@ -45,7 +46,9 @@ window.WEDDING_CONFIG = {
      4. THIỆP MỜI / ĐỊA ĐIỂM
      ========================================================= */
   ceremonyTitle: "LỄ ĐÍNH HÔN",
+  ceremonyHomeNote: "Lễ đính hôn diễn ra tại tư gia.",
   eventCardTitle: "TIỆC ĐÍNH HÔN",
+  eventHall: "Sảnh: Felix Hall",
   venueShort: "White Palace",
   venueName: "WHITE PALACE VÕ VĂN KIỆT",
   eventTimeShort: "12:00 PM",
@@ -81,8 +84,8 @@ window.WEDDING_CONFIG = {
   /* =========================================================
      7. CHIA SẺ LINK
      ========================================================= */
-  shareTitle: "Truong Hoang & Linh - Engagement Invitation",
-  shareDescription: "Trân trọng kính mời bạn đến chung vui cùng Truong Hoang & Linh.",
+  shareTitle: "Truong Hoang & Thuý Linh - Engagement Invitation",
+  shareDescription: "Trân trọng kính mời bạn đến chung vui cùng Truong Hoang & Thuý Linh.",
   shareImage: "https://YOUR-DOMAIN.com/images/share.jpg",
 
   /* =========================================================

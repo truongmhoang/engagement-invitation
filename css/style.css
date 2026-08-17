@@ -521,10 +521,12 @@ body.invitation-opened .intro-4{transition-delay:.60s}
 .ceremony-date{margin:12px 0 8px;font:650 43px/.98 var(--sans);letter-spacing:.01em}
 .lunar{margin:8px auto;font:400 italic 16px/1.42 var(--sans)}
 .ceremony-time-long{margin-top:17px;font:400 17px/1.3 var(--sans)}
+.ceremony-home-note{margin:10px auto 0;font:400 15px/1.45 var(--sans);font-style:italic;color:#69645e;max-width:340px}
 
 .event-card{width:98%;padding:31px 22px 27px;border-width:1.5px;border-radius:34px;box-shadow:0 10px 18px rgba(27,25,22,.18)}
 .event-card-title{margin-bottom:14px;font:500 29px/1.05 var(--serif);letter-spacing:.035em}
-.event-card-place{margin-bottom:12px;font:400 18px/1.15 var(--serif)}
+.event-card-place{margin-bottom:8px;font:400 18px/1.15 var(--serif)}
+.event-card-hall{margin:0 0 10px;font:500 15px/1.2 var(--sans);color:#8a6a4b;letter-spacing:.02em}
 .event-card-time{margin-bottom:22px;font:400 21px/1.15 var(--sans)}
 .event-date-grid{grid-template-columns:1fr 110px 1fr;gap:10px}
 .event-date-grid>span{padding:12px 0;font:400 17px/1.2 var(--serif)}
@@ -548,20 +550,20 @@ body.invitation-opened .intro-4{transition-delay:.60s}
 .polaroid-icon{right:14px;top:64px;font-size:42px}
 .plate-icon{left:14px;top:67px;width:48px;height:48px;font-size:38px}
 
-.venue-section{padding:12px 24px 58px;text-align:center}
-.route-arrow{width:205px;height:165px;margin:-7px auto 8px -2px;opacity:0;transform:translateX(-18px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.venue-section{padding:8px 24px 58px;text-align:center}
+.route-arrow{width:168px;height:158px;margin:-18px auto 10px;opacity:0;transform:translateY(-10px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
 .route-arrow.is-visible{opacity:1;transform:none}
 .route-arrow svg{display:block;width:100%;height:100%;overflow:visible}
 .route-path{stroke-dashoffset:38;transition:stroke-dashoffset 1.25s cubic-bezier(.22,.61,.36,1)}
 .route-arrow.is-visible .route-path{stroke-dashoffset:0}
-.route-heart{fill:#c6412e;font:700 15px/1 var(--sans);transform:rotate(-17deg);transform-origin:48px 96px}
+.route-heart{fill:#c6412e;font:700 14px/1 var(--sans);transform:rotate(-10deg);transform-origin:60px 120px}
 .venue-section .small-heading{margin:0 0 14px;font:500 19px/1.2 var(--sans);letter-spacing:.025em}
 .venue-heading{max-width:385px;margin-bottom:13px;font:600 28px/1.14 var(--serif)}
 .venue-address{max-width:385px;margin-bottom:22px;font:400 16px/1.48 var(--sans)}
 .brown-button{min-height:47px;padding:0 27px;font:500 15px/1 var(--sans)}
 .map-frame{height:330px;margin-top:22px}
 
-.calendar-gallery-section{padding:46px 24px 65px}
+.calendar-gallery-section{padding:34px 24px 65px}
 .quad-gallery{gap:6px;margin-bottom:35px;border-radius:22px}
 .quad-gallery img{height:178px}
 .month-calendar{width:96%;margin-bottom:40px;padding:24px 22px 20px;border-radius:22px}
@@ -813,12 +815,12 @@ body.invitation-opened .couple-line span:last-child{transition-delay:.68s}
 
 /* arrow connector like feedback */
 .venue-section{padding:0 24px 58px;text-align:center}
-.route-arrow{width:120px;height:235px;margin:-8px auto 6px;opacity:0;transform:translateY(-6px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.route-arrow{width:150px;height:156px;margin:-18px auto 8px;opacity:0;transform:translateY(-6px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
 .route-arrow.is-visible{opacity:1;transform:none}
 .route-arrow svg{width:100%;height:100%;display:block;overflow:visible}
 .route-path{stroke-dashoffset:56;transition:stroke-dashoffset 1.25s cubic-bezier(.22,.61,.36,1)}
 .route-arrow.is-visible .route-path{stroke-dashoffset:0}
-.route-heart{fill:#d14a36;font:700 15px/1 var(--sans)}
+.route-heart{fill:#d14a36;font:700 14px/1 var(--sans)}
 
 /* RSVP extra select */
 .guest-select-wrap{margin:0 0 16px}

@@ -25,6 +25,7 @@ setText("[data-bride-signature]", cfg.brideSignature || cfg.brideDisplay || cfg.
 setText("[data-groom-role]", cfg.groomRole || "Út Nam");
 setText("[data-bride-role]", cfg.brideRole || "Út Nữ");
 setText("[data-event-time-short]", cfg.eventTimeShort || cfg.ceremonyTimeShort);
+setText("[data-hero-time-short]", cfg.heroTimeShort || cfg.eventTimeShort || cfg.ceremonyTimeShort);
 setText("[data-ceremony-time-short]", cfg.ceremonyTimeShort);
 setText("[data-ceremony-time-long]", cfg.ceremonyTimeLong);
 setText("[data-weekday]", cfg.weekday);
@@ -46,6 +47,8 @@ setText("[data-event-card-title]", cfg.eventCardTitle);
 setText("[data-venue-short]", cfg.venueShort);
 setText("[data-venue-name]", cfg.venueName);
 setText("[data-venue-address]", cfg.venueAddress);
+setText("[data-ceremony-home-note]", cfg.ceremonyHomeNote);
+setText("[data-event-hall]", cfg.eventHall);
 setText("[data-timeline-title]", cfg.timelineTitle);
 setText("[data-timeline1-time]", cfg.timeline1Time);
 setText("[data-timeline1-label]", cfg.timeline1Label);

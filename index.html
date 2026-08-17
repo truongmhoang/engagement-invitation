@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italianno&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=10" onerror="this.onerror=null;this.href='css/style.css?v=10'">
+  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=12" onerror="this.onerror=null;this.href='css/style.css?v=12'">
 </head>
 <body class="locked">
   <!-- =====================================================
@@ -32,9 +32,9 @@
     <div class="opening-card">
       <p class="opening-eyebrow" data-opening-title>ENGAGEMENT INVITATION</p>
       <h1 class="opening-names">
-        <span data-groom>TRUONG HOANG</span>
+        <span class="opening-person opening-person-top" data-groom>Truong Manh Hoang</span>
         <span class="opening-amp">&amp;</span>
-        <span data-bride>LINH</span>
+        <span class="opening-person opening-person-bottom" data-bride>Lương Thuý Linh</span>
       </h1>
       <p class="opening-date" data-date-text>25 • 10 • 2026</p>
       <button id="openInvitation" class="opening-button" type="button">💌 MỞ THIỆP</button>
@@ -62,13 +62,13 @@
       <p class="couple-line intro-seq intro-3">
         <span data-groom-display>Truong Hoang</span>
         <span class="serif-amp">&amp;</span>
-        <span data-bride-display>Linh</span>
+        <span data-bride-display>Thuý Linh</span>
       </p>
 
       <div class="date-layout intro-seq intro-4">
         <p class="weekday" data-weekday>CHỦ NHẬT</p>
         <div class="date-row">
-          <span class="date-side" data-ceremony-time-short>9:00 AM</span>
+          <span class="date-side" data-hero-time-short>12:00 PM</span>
           <strong class="date-day" data-day>25</strong>
           <span class="date-side" data-month-text>THÁNG 10</span>
         </div>
@@ -140,7 +140,7 @@
 
       <div class="name-pill pill-left profile-name-pill" data-profile-slide="right">
         <span data-bride-role>Út Nữ</span>
-        <strong data-bride-display>Linh</strong>
+        <strong data-bride-display>Thuý Linh</strong>
       </div>
     </section>
 
@@ -150,16 +150,18 @@
       <div class="rings-mark" data-reveal="zoom" aria-hidden="true">
         <span>♧</span><span>♧</span>
       </div>
-      <p class="invite-copy" data-reveal="left-soft">Thân mời quý vị đến tham dự bữa tiệc chung vui cùng<br><span data-groom-display>Truong Hoang</span> &amp; <span data-bride-display>Linh</span></p>
+      <p class="invite-copy" data-reveal="left-soft">Thân mời quý vị đến tham dự bữa tiệc chung vui cùng<br><span data-groom-display>Truong Hoang</span> &amp; <span data-bride-display>Thuý Linh</span></p>
       <h2 class="ceremony-title" data-ceremony-title data-reveal="left-soft">LỄ ĐÍNH HÔN</h2>
       <p class="ceremony-date" data-event-date data-reveal="left-soft">25.10.2026</p>
       <p class="lunar" data-lunar-date data-reveal="left-soft">(Nhằm ngày 16 tháng 09 năm Bính Ngọ)</p>
       <p class="ceremony-time-long" data-ceremony-time-long data-reveal="left-soft">Lúc 09 giờ 00 phút</p>
+      <p class="ceremony-home-note" data-ceremony-home-note data-reveal="left-soft">Lễ đính hôn diễn ra tại tư gia.</p>
       <div class="ornament-line bottom" data-reveal="up"><span>❦</span></div>
 
       <div class="event-card" data-reveal="zoom">
         <p class="event-card-title" data-event-card-title data-reveal="left-soft">TIỆC ĐÍNH HÔN</p>
         <p class="event-card-place" data-venue-short data-reveal="right-soft">White Palace</p>
+        <p class="event-card-hall" data-event-hall data-reveal="right-soft">Sảnh: Felix Hall</p>
         <p class="event-card-time" data-reveal="left-soft"><span data-event-time-short>12:00 PM</span> | <span data-weekday-title>Chủ Nhật</span></p>
         <div class="event-date-grid" data-reveal="up">
           <span data-month-short>Tháng 10</span>
@@ -170,7 +172,36 @@
       </div>
     </section>
 
-    <!-- 5 / TIMELINE -->
+    <!-- 5 / ĐỊA ĐIỂM -->
+    <section class="venue-section floral-bg">
+      <div class="route-arrow" data-reveal="draw" aria-hidden="true">
+        <svg viewBox="0 0 150 170" role="presentation">
+          <defs>
+            <marker id="routeArrowHead" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L10,5 L0,10 Z" fill="#22201d"></path>
+            </marker>
+          </defs>
+          <path class="route-path"
+                d="M84 8 C 112 34, 109 57, 90 74 C 66 96, 62 121, 77 147"
+                fill="none"
+                stroke="#22201d"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-dasharray="7 8"
+                marker-end="url(#routeArrowHead)"/>
+          <text class="route-heart" x="61" y="121">♥</text>
+        </svg>
+      </div>
+      <p class="small-heading" data-reveal="left-soft">ĐỊA ĐIỂM TỔ CHỨC</p>
+      <h2 class="venue-heading" data-venue-name data-reveal="left-soft">WHITE PALACE VÕ VĂN KIỆT</h2>
+      <p class="venue-address" data-venue-address data-reveal="left-soft">59 Đường Võ Văn Kiệt, Phường An Lạc, TP.HCM</p>
+      <a id="mapButton" class="brown-button" href="#" target="_blank" rel="noopener" data-reveal="left-soft">Xem hướng dẫn</a>
+      <div class="map-frame" data-reveal="zoom">
+        <iframe id="mapFrame" title="Bản đồ địa điểm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <!-- 6 / TIMELINE -->
     <section class="timeline-section floral-bg">
       <div class="ornament-line timeline-ornament" data-reveal="up"><span>❦</span></div>
       <h2 class="timeline-heading" data-reveal="left-soft" data-timeline-title>TIMELINE</h2>
@@ -194,50 +225,15 @@
 
         <div class="timeline-item left item-3" data-reveal="left-soft">
           <div class="timeline-connector" aria-hidden="true"></div>
-          <p class="timeline-time" data-timeline3-time>9:00 AM</p>
+          <p class="timeline-time" data-timeline3-time>12:00 PM</p>
           <p class="timeline-label" data-timeline3-label>Khai tiệc</p>
           <div class="timeline-icon plate-icon" aria-hidden="true">◯</div>
         </div>
       </div>
     </section>
 
-    <!-- 6 / ĐỊA ĐIỂM -->
-    <section class="venue-section floral-bg">
-      <div class="route-arrow" data-reveal="draw" aria-hidden="true">
-        <svg viewBox="0 0 120 235" role="presentation">
-          <defs>
-            <marker id="routeArrowHead" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L10,5 L0,10 Z" fill="#22201d"></path>
-            </marker>
-          </defs>
-          <path class="route-path"
-                d="M60 6 C 44 34, 44 67, 58 96 C 66 114, 66 136, 59 160 C 54 177, 56 195, 69 214"
-                fill="none"
-                stroke="#22201d"
-                stroke-width="2.2"
-                stroke-linecap="round"
-                stroke-dasharray="7 8"
-                marker-end="url(#routeArrowHead)"/>
-          <text class="route-heart" x="49" y="184">♥</text>
-        </svg>
-      </div>
-      <p class="small-heading" data-reveal="left-soft">ĐỊA ĐIỂM TỔ CHỨC</p>
-      <h2 class="venue-heading" data-venue-name data-reveal="left-soft">WHITE PALACE VÕ VĂN KIỆT</h2>
-      <p class="venue-address" data-venue-address data-reveal="left-soft">59 Đường Võ Văn Kiệt, Phường An Lạc, TP.HCM</p>
-      <a id="mapButton" class="brown-button" href="#" target="_blank" rel="noopener" data-reveal="left-soft">Xem hướng dẫn</a>
-      <div class="map-frame" data-reveal="zoom">
-        <iframe id="mapFrame" title="Bản đồ địa điểm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </section>
-
     <!-- 7 / COLLAGE + CALENDAR -->
     <section class="calendar-gallery-section floral-bg">
-      <div class="quad-gallery" data-reveal="zoom">
-        <img src="images/gallery-1.jpg" alt="Ảnh cưới 1" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
-        <img src="images/gallery-2.jpg" alt="Ảnh cưới 2" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
-        <img src="images/gallery-3.jpg" alt="Ảnh cưới 3" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
-        <img src="images/gallery-4.jpg" alt="Ảnh cưới 4" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
-      </div>
 
       <div class="month-calendar" data-reveal="up">
         <h3 id="calendarTitle">THÁNG 10 - 2026</h3>
@@ -360,8 +356,8 @@
           next();
         });
       }
-      loadFirst(["config.js?v=10", "js/config.js?v=10"])
-        .then(function(){ return loadFirst(["script.js?v=10", "js/script.js?v=10"]); })
+      loadFirst(["config.js?v=12", "js/config.js?v=12"])
+        .then(function(){ return loadFirst(["script.js?v=12", "js/script.js?v=12"]); })
         .catch(function(err){ console.error(err); });
     })();
   </script>
