@@ -21,8 +21,8 @@
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italianno&family=WindSong:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=16" onerror="this.onerror=null;this.href='css/style.css?v=16'">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italianno&family=Mrs+Saint+Delafield&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=17" onerror="this.onerror=null;this.href='css/style.css?v=17'">
 </head>
 <body class="locked">
   <!-- =====================================================
@@ -180,7 +180,7 @@
     <!-- 5 / ĐỊA ĐIỂM -->
     <section class="venue-section floral-bg">
       <div class="event-route-layout" aria-label="Lịch trình và hướng dẫn đến địa điểm">
-        <div class="compact-timeline">
+        <div class="compact-timeline" data-reveal="timeline-wrap">
           <div class="compact-timeline-head" data-reveal="left-soft">
             <span class="compact-ornament">❦</span>
             <strong data-timeline-title>TIMELINE</strong>
@@ -242,7 +242,7 @@
 
       <blockquote class="quote-block" data-quote data-reveal="up">“Thật vui nếu bạn góp mặt tại bữa tiệc mừng hạnh phúc của chúng mình và cùng lưu giữ những khoảnh khắc ý nghĩa.”</blockquote>
 
-      <div class="signature-block" data-reveal="up">
+      <div class="signature-block" data-reveal="signature">
         <span data-groom-signature>Truong</span>
         <em>&amp;</em>
         <span data-bride-signature>Linh</span>
@@ -353,8 +353,8 @@
           next();
         });
       }
-      loadFirst(["config.js?v=16", "js/config.js?v=16"])
-        .then(function(){ return loadFirst(["script.js?v=16", "js/script.js?v=16"]); })
+      loadFirst(["config.js?v=17", "js/config.js?v=17"])
+        .then(function(){ return loadFirst(["script.js?v=17", "js/script.js?v=17"]); })
         .catch(function(err){ console.error(err); });
     })();
   </script>

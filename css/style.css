@@ -12,7 +12,7 @@
   --serif:"Cormorant Garamond", Georgia, serif;
   --sans:"Montserrat", Arial, sans-serif;
   --script:"Italianno", cursive;
-  --signature-font:"WindSong", "Italianno", cursive;
+  --signature-font:"Mrs Saint Delafield", "Italianno", cursive;
   --opening-font:var(--serif);
   --shadow:0 9px 22px rgba(31,27,22,.16);
 }
@@ -1198,4 +1198,225 @@ footer{display:none}
 @media (prefers-reduced-motion:reduce){
   .route-path{stroke-dashoffset:0!important}
   .route-heart{opacity:1!important;transform:none!important}
+}
+
+
+/* =========================================================
+   V17 — TIMELINE mini dạng dọc + chữ ký giống mẫu hơn
+   Giữ nguyên footprint của cụm timeline/mũi tên V16.
+   ========================================================= */
+
+/* TIMELINE: cùng kích thước tổng thể, đổi bố cục bên trong */
+.event-route-layout{
+  width:min(100%,390px);
+  margin:34px auto 22px;
+  grid-template-columns:minmax(0,1fr) 92px;
+  gap:12px;
+  align-items:center;
+}
+.compact-timeline{
+  position:relative;
+  height:184px;
+  padding:0;
+  border:0;
+  background:transparent;
+  overflow:visible;
+  opacity:0;
+  transition:opacity .55s ease;
+}
+.compact-timeline.is-visible{opacity:1}
+.compact-timeline::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:43px;
+  bottom:10px;
+  border-left:2px dashed #171512;
+  transform:translateX(-50%) scaleY(0);
+  transform-origin:top;
+  transition:transform 1.08s .12s cubic-bezier(.16,1,.3,1);
+}
+.compact-timeline.is-visible::after{transform:translateX(-50%) scaleY(1)}
+
+.compact-timeline-head{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin:0;
+  color:var(--brown);
+}
+.compact-timeline-head::before,
+.compact-timeline-head::after{
+  content:"";
+  width:45px;
+  height:1px;
+  background:#817b74;
+  opacity:.8;
+}
+.compact-timeline-head strong{
+  font:600 15px/1 var(--serif);
+  letter-spacing:.065em;
+}
+.compact-ornament{display:none}
+
+.compact-step{
+  position:absolute;
+  width:44%;
+  padding:0;
+  border:0;
+  display:block;
+  background:transparent;
+}
+.compact-step:nth-of-type(2){left:0;top:49px;text-align:left}
+.compact-step:nth-of-type(3){right:0;top:91px;text-align:right}
+.compact-step:nth-of-type(4){left:0;top:133px;text-align:left}
+
+.compact-step::after{
+  content:"";
+  position:absolute;
+  top:15px;
+  width:34px;
+  border-top:2px dashed #171512;
+}
+.compact-step:nth-of-type(2)::after,
+.compact-step:nth-of-type(4)::after{right:-37px}
+.compact-step:nth-of-type(3)::after{left:-37px}
+
+.compact-step::before{
+  position:absolute;
+  color:#aaa49c;
+  line-height:1;
+  opacity:.95;
+  background:transparent;
+  width:auto;
+  height:auto;
+  border-radius:0;
+}
+.compact-step:nth-of-type(2)::before{
+  content:"◎◎";
+  left:13px;
+  top:28px;
+  font-size:25px;
+  letter-spacing:-7px;
+  transform:rotate(13deg);
+}
+.compact-step:nth-of-type(3)::before{
+  content:"▱▭";
+  right:10px;
+  top:29px;
+  font-size:24px;
+  letter-spacing:-9px;
+  transform:rotate(6deg);
+}
+.compact-step:nth-of-type(4)::before{
+  content:"◯";
+  left:16px;
+  top:27px;
+  width:28px;
+  height:28px;
+  border:1.4px solid #aaa49c;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+}
+.compact-time{
+  display:block;
+  margin:0 0 3px;
+  color:#181512;
+  font:500 10px/1 var(--serif);
+  white-space:nowrap;
+}
+.compact-label{
+  display:block;
+  color:var(--brown);
+  font:500 15px/1 var(--serif);
+  white-space:nowrap;
+}
+
+/* slide giống video: trái/phải đi vào rồi chậm dần */
+.compact-step[data-reveal="timeline-left"]{transform:translateX(-38px);opacity:0}
+.compact-step[data-reveal="timeline-right"]{transform:translateX(38px);opacity:0}
+.compact-step.is-visible{transform:none;opacity:1}
+.compact-step:nth-of-type(2){transition-delay:.16s}
+.compact-step:nth-of-type(3){transition-delay:.30s}
+.compact-step:nth-of-type(4){transition-delay:.44s}
+
+/* CHỮ KÝ TRÊN OUR MEMORIES: mảnh, tách trái/phải như ảnh mẫu */
+.signature-block{
+  position:relative;
+  display:block;
+  width:min(100%,390px);
+  height:248px;
+  margin:30px auto 0;
+  overflow:visible;
+  opacity:0;
+  transition:opacity .55s ease;
+}
+.signature-block.is-visible{opacity:1}
+.signature-block span{
+  position:absolute;
+  display:block;
+  margin:0;
+  color:#111;
+  font-family:var(--signature-font);
+  font-weight:400;
+  font-size:96px;
+  line-height:.78;
+  letter-spacing:0;
+  white-space:nowrap;
+  opacity:0;
+  transition:opacity .7s ease,transform 1.05s cubic-bezier(.16,1,.3,1);
+}
+.signature-block span:first-of-type{
+  left:18px;
+  top:10px;
+  transform:translateX(-52px) rotate(-3deg);
+}
+.signature-block span:last-of-type{
+  right:4px;
+  bottom:0;
+  transform:translateX(52px) rotate(-3deg);
+}
+.signature-block em{
+  position:absolute;
+  left:50%;
+  top:112px;
+  transform:translate(-50%,10px);
+  margin:0;
+  color:#45413c;
+  font:400 18px/1 var(--serif);
+  opacity:0;
+  transition:opacity .45s .34s ease,transform .7s .34s cubic-bezier(.16,1,.3,1);
+}
+.signature-block.is-visible span:first-of-type{opacity:1;transform:rotate(-3deg)}
+.signature-block.is-visible span:last-of-type{opacity:1;transform:rotate(-3deg);transition-delay:.24s}
+.signature-block.is-visible em{opacity:1;transform:translate(-50%,0)}
+.memories-heading{
+  margin-top:28px;
+}
+
+@media (max-width:390px){
+  .compact-timeline{height:184px}
+  .compact-timeline-head strong{font-size:14px}
+  .compact-step:nth-of-type(2){top:49px}
+  .compact-step:nth-of-type(3){top:91px}
+  .compact-step:nth-of-type(4){top:133px}
+  .compact-label{font-size:14px}
+  .compact-time{font-size:9.5px}
+  .signature-block{height:235px;margin-top:26px}
+  .signature-block span{font-size:88px}
+  .signature-block span:first-of-type{left:8px;top:8px}
+  .signature-block span:last-of-type{right:-2px;bottom:0}
+  .signature-block em{top:105px;font-size:17px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .compact-timeline::after{transform:translateX(-50%) scaleY(1)!important}
+  .signature-block span,.signature-block em{opacity:1!important;transform:none!important}
 }
