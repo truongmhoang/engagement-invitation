@@ -1,0 +1,653 @@
+:root{
+  --bg:#fbf7f3;
+  --paper:#fffdfb;
+  --ink:#332c29;
+  --muted:#8a7770;
+  --accent:#b96f78;
+  --line:#eaded9;
+  --shadow:0 18px 50px rgba(42,33,28,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  line-height:1.65;
+}
+body.locked{overflow:hidden}
+img{display:block;width:100%}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+
+.section{
+  width:min(100%,760px);
+  margin:0 auto;
+  padding:72px 22px;
+  text-align:center;
+}
+.paper{
+  background:var(--paper);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  margin-top:24px;
+  margin-bottom:24px;
+}
+.eyebrow{
+  font-family:Arial,sans-serif;
+  font-size:.72rem;
+  letter-spacing:.23em;
+  font-weight:700;
+  color:var(--accent);
+  margin:0 0 12px;
+}
+.light{color:#fff}
+h1,h2,h3,p{margin-top:0}
+h2{
+  font-weight:400;
+  font-size:clamp(2rem,7vw,3.6rem);
+  line-height:1.12;
+  margin-bottom:20px;
+}
+h3{font-size:1.25rem}
+.lead{
+  max-width:590px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:1.08rem;
+}
+.amp{font-style:italic;font-weight:400}
+.tiny{font-family:Arial,sans-serif;font-size:.78rem;color:var(--muted);margin:12px 0 0}
+
+.opening{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255,255,255,.95), transparent 35%),
+    linear-gradient(180deg, #fdf8f5 0%, #f7ece8 55%, #f3e3df 100%);
+  transition:opacity .7s ease,visibility .7s ease;
+}
+.opening.hidden{opacity:0;visibility:hidden}
+.opening-card{
+  width:min(92vw,700px);
+  background:rgba(255,253,249,.88);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(124,91,75,.15);
+  border-radius:30px;
+  padding:54px 28px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.opening-card h1{
+  font-size:clamp(1.7rem, 5.8vw, 3.2rem);
+  font-weight:400;
+  line-height:1.05;
+  letter-spacing:-0.025em;
+  margin:22px 0;
+  width:100%;
+  max-width:100%;
+}
+
+.opening-card h1 [data-bride],
+.opening-card h1 [data-groom]{
+  display:block;
+  white-space:nowrap;
+  max-width:100%;
+}
+
+.opening-card h1 .amp{
+  display:block;
+  font-size:.9em;
+  line-height:1;
+  margin:8px 0;
+}
+.date{letter-spacing:.18em;font-family:Arial,sans-serif;font-size:.82rem}
+.hero-split {
+    width: 100%;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background: #fffaf7;
+}
+
+
+/* BÊN TRÁI: ẢNH */
+
+.hero-photo {
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+.hero-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* BÊN PHẢI: CHỮ */
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px;
+
+    box-sizing: border-box;
+}
+
+
+/* SAVE THE DATE */
+
+.eyebrow {
+    margin: 0 0 30px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    color: #bd7a86;
+}
+
+
+/* TÊN */
+
+.hero-text h1 {
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(38px, 4vw, 62px);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #302b29;
+}
+
+.hero-text h1 span {
+    display: block;
+}
+
+.hero-text .amp {
+    margin: 7px 0;
+
+    font-size: 0.7em;
+
+    color: #b76c79;
+}
+
+
+/* NGÀY */
+
+.hero-date {
+    margin-top: 30px;
+
+    font-size: 16px;
+
+    letter-spacing: 5px;
+
+    color: #5a504d;
+}
+
+
+/* LỜI MỜI */
+
+.hero-invite {
+    max-width: 430px;
+
+    margin-top: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #655b57;
+}
+.hero{
+  position:relative;
+  min-height:100svh;
+  width:100%;
+  max-width:none;
+  padding:0;
+  overflow:hidden;
+}
+.hero-image{
+  width:100%;
+  height:100svh;
+  object-fit:cover;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(20,15,12,.72),rgba(20,15,12,.08) 62%,rgba(20,15,12,.2));
+}
+.hero-copy{
+  position:absolute;
+  left:50%;
+  bottom:8vh;
+  transform:translateX(-50%);
+  width:min(92%,700px);
+  text-align:center;
+  color:#fff;
+}
+.hero-copy h2 [data-bride],
+.hero-copy h2 [data-groom]{
+  display:block;
+  white-space:nowrap;
+}
+
+.hero-copy h2 .amp{
+  display:block;
+  margin:5px 0;
+}
+
+.hero-copy h2{
+  font-size:clamp(1.9rem, 7.5vw, 4.5rem);
+  line-height:1;
+  letter-spacing:-0.03em;
+}
+.hero-copy h2{font-size:clamp(2.4rem,9vw,5rem);
+  line-height:0.95;
+  letter-spacing:-0.03em;
+  margin-bottom:12px;
+  word-spacing:0;}
+.hero-invite{max-width:570px;margin:20px auto 0;font-size:1rem}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 22px;
+  border-radius:999px;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:transform .2s ease,opacity .2s ease;
+  font-family:Arial,sans-serif;
+  font-size:.82rem;
+  letter-spacing:.05em;
+  font-weight:700;
+}
+.btn:active{transform:scale(.98)}
+.primary{background:var(--accent);color:white}
+.ghost{border-color:var(--accent);color:var(--accent);background:transparent}
+.full{width:100%}
+.button-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+
+.families{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  margin:30px 0;
+}
+.card,.event-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:26px 20px;
+}
+.event-card{margin-top:18px}
+.top-gap{margin-top:26px}
+
+.countdown-section{
+  width:100%;
+  max-width:none;
+  color:white;
+  background:linear-gradient(135deg,#6f5042,#947261);
+}
+.countdown{
+  width:min(100%,760px);
+  margin:28px auto 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.countdown div{
+  padding:18px 8px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:16px;
+}
+.countdown strong{
+  display:block;
+  font-family:Arial,sans-serif;
+  font-size:clamp(1.35rem,6vw,2.3rem);
+}
+.countdown span{font-family:Arial,sans-serif;font-size:.72rem;opacity:.88}
+
+.gallery{
+  columns:2;
+  column-gap:12px;
+  margin-top:30px;
+}
+.gallery img{
+  border-radius:16px;
+  margin-bottom:12px;
+  break-inside:avoid;
+}
+
+.rsvp-form{
+  width: 100%;
+    max-width: 560px;
+    height: auto !important;
+    max-height: none !important;
+    margin: 34px auto 0;
+    padding: 0 16px 30px;
+    box-sizing: border-box;
+    text-align: left;
+    overflow: visible !important;
+}
+.rsvp-form label{
+  display:block;
+  margin-bottom:18px;
+  font-family:Arial,sans-serif;
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--muted);
+}
+input,select,textarea{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 7px;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  color: var(--ink);
+  outline: none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+.form-status{text-align:center;margin:14px 0 0;font-family:Arial,sans-serif;font-size:.84rem}
+.thankyou{
+    text-align: center;
+    padding: 90px 20px 100px;
+}
+
+.thankyou .eyebrow{
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: #c58d98;
+    margin-bottom: 28px;
+}
+
+.thankyou-names{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 400;
+    line-height: 1.1;
+
+    color: #332d2b;
+    margin: 0;
+}
+
+.thankyou-names .amp{
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    color: #c58d98;
+    font-size: 0.8em;
+}
+
+.thankyou-divider{
+    margin: 25px auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #c58d98;
+}
+
+.thankyou-divider::before,
+.thankyou-divider::after{
+    content: "";
+    width: 55px;
+    height: 1px;
+    background: #e5cdd1;
+}
+
+.thankyou-divider span{
+    font-size: 18px;
+}
+
+.thankyou-message{
+    font-size: 15px;
+    line-height: 1.8;
+    color: #6f6561;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.thankyou-heart{
+    color: #c87887;
+    margin-left: 4px;
+}
+
+.music-btn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:900;
+  width:48px;height:48px;
+  border:0;
+  border-radius:50%;
+  background:var(--accent);
+  color:white;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  font-size:1.25rem;
+}
+.music-btn.playing{animation:spin 5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.visible{opacity:1;transform:none}
+
+@media(min-width:680px){
+  .families{grid-template-columns:1fr 1fr}
+  .gallery{columns:3}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .music-btn.playing{animation:none}
+}
+@media (max-width: 768px) {
+
+    .hero-split {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-photo {
+        height: 55vh;
+        min-height: 400px;
+    }
+
+    .hero-text {
+        padding: 50px 20px 60px;
+    }
+
+    .hero-text h1 {
+        font-size: 38px;
+    }
+
+    .hero-date {
+        font-size: 14px;
+        letter-spacing: 4px;
+    }
+
+    .hero-invite {
+        font-size: 17px;
+    }
+}
+.story-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: 0;
+}
+.hero-invite {
+    font-family: "Be Vietnam Pro", Arial, sans-serif !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: 0 !important;
+    word-spacing: 0;
+    font-style: normal;
+}
+/* ===== THANK YOU - DESKTOP ===== */
+
+.thankyou{
+    text-align: center;
+    padding: 90px 20px 100px;
+    overflow: visible;
+}
+
+.thankyou .eyebrow{
+    margin: 0 0 28px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #c58d98;
+}
+
+.thankyou .thankyou-names{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(40px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: 0;
+
+    color: #332d2b;
+}
+
+.thankyou .thankyou-names > span{
+    display: inline-block;
+}
+
+.thankyou .thankyou-names .amp{
+    font-size: 0.72em;
+    font-style: italic;
+    font-weight: 400;
+    color: #c58d98;
+}
+
+.thankyou .thankyou-divider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    margin: 24px auto 18px;
+
+    color: #c58d98;
+}
+
+.thankyou .thankyou-divider::before,
+.thankyou .thankyou-divider::after{
+    content: "";
+    display: block;
+    width: 55px;
+    height: 1px;
+    background: #e5cdd1;
+}
+
+.thankyou .thankyou-divider span{
+    font-size: 17px;
+    line-height: 1;
+}
+
+.thankyou .thankyou-message{
+    max-width: 600px;
+    margin: 0 auto;
+
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+
+    color: #6f6561;
+}
+
+.thankyou .thankyou-heart{
+    margin-left: 4px;
+    color: #c87887;
+}
+@media (max-width: 600px){
+
+    .thankyou{
+        padding: 70px 20px 80px;
+    }
+
+    .thankyou .eyebrow{
+        font-size: 10px;
+        letter-spacing: 4px;
+        margin-bottom: 24px;
+    }
+
+    .thankyou-names{
+        flex-direction: column;
+        gap: 3px;
+        font-size: 38px;
+        line-height: 1.05;
+    }
+
+    .thankyou-names .amp{
+        font-size: 28px;
+        margin: 3px 0;
+    }
+
+    .thankyou-message{
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 330px;
+    }
+}
