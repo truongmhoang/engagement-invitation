@@ -64,12 +64,10 @@ window.WEDDING_CONFIG = {
   /* =========================================================
      5. NỘI DUNG
      ========================================================= */
-  quote: "“Thật vui nếu bạn góp mặt tại bữa tiệc mừng hạnh phúc của chúng mình và cùng lưu giữ những khoảnh khắc ý nghĩa.”",
-  memoryCaption1: "Hôn nhân không phải là điểm đến, mà là hành trình mà chúng ta cùng nhau bước đi.",
-  memoryCaption2: "Chúng mình rất hân hạnh được mời bạn đến chung vui và chứng kiến khoảnh khắc thiêng liêng này.",
-  countdownNote: "Một ngày để nhớ trọn đời,\nChúng mình chung bước, gọi mời yêu thương.\nCảm ơn vì đã đến cùng,\nChung vui hạnh phúc – kết vòng phu thê.",
-
-
+  quote: "“Nếu trong ngày trọng đại này có sự hiện diện, chứng kiến và lời chúc phúc của bạn, niềm hạnh phúc của chúng mình sẽ càng thêm trọn vẹn.”",
+  memoryCaption1Html: '<span class="bilingual-line bilingual-han">從兩段各自的故事開始，我們攜手寫下屬於彼此的共同旅程。</span><span class="bilingual-line bilingual-vi"><em>Từ hai câu chuyện riêng, chúng mình nắm tay nhau viết nên một hành trình chung thuộc về cả hai.</em></span>',
+  memoryCaption2Html: '<span class="bilingual-line bilingual-han">感謝你一路相伴，期待與你分享這份幸福與喜悅。</span><span class="bilingual-line bilingual-vi"><em>Cảm ơn bạn đã luôn đồng hành. Mong được cùng bạn sẻ chia niềm hạnh phúc và niềm vui này.</em></span>',
+  countdownNoteHtml: 'Ngày chúng mình mong đợi đang dần đến gần.<br>Chúng mình sẽ nắm tay nhau bước vào một chương mới của cuộc đời.<br>Mong rằng ngày hôm ấy sẽ có sự chứng kiến và lời chúc phúc của bạn.',
 
   /* =========================================================
      6. TIMELINE
@@ -84,9 +82,6 @@ window.WEDDING_CONFIG = {
 
   /* =========================================================
      7. HIỆU ỨNG CÁNH HOA HỒNG
-     - maxPetals: số cánh tối đa cùng lúc
-     - spawnMin/spawnMax: khoảng nghỉ giữa mỗi cánh (ms)
-     - durationMin/durationMax: thời gian rơi của mỗi cánh (giây)
      ========================================================= */
   petalEffect: {
     enabled: true,
@@ -106,20 +101,8 @@ window.WEDDING_CONFIG = {
 
   /* =========================================================
      9. RSVP -> GOOGLE SHEETS
-
-     QUAN TRỌNG:
-     - Không dán link Google Sheet bình thường ở đây.
-     - Hãy mở Google Sheet -> Extensions -> Apps Script.
-     - Dán file google-apps-script.gs đi kèm, Deploy thành Web app.
-     - Sau đó dán URL Web app dạng:
-       https://script.google.com/macros/s/AKfycb.../exec
-       vào googleSheetsEndpoint bên dưới.
      ========================================================= */
   googleSheetsEndpoint: "",
-
-  /* Tên trang tính (tab) mà Apps Script sẽ ghi dữ liệu vào. */
   googleSheetsTabName: "RSVP",
-
-  /* Tùy chọn cũ: chỉ dùng nếu bạn vẫn muốn Formspree làm dự phòng. */
   rsvpEndpoint: ""
 };

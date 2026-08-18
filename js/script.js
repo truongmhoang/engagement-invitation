@@ -5,6 +5,11 @@ function setText(selector, value){
   document.querySelectorAll(selector).forEach(el => { el.textContent = value; });
 }
 
+function setHtml(selector, value){
+  if(value === undefined || value === null || value === "") return;
+  document.querySelectorAll(selector).forEach(el => { el.innerHTML = value; });
+}
+
 function setMeta(property, value){
   if(!value) return;
   const el = document.querySelector(`meta[property="${property}"]`);
@@ -58,10 +63,20 @@ setText("[data-timeline2-label]", cfg.timeline2Label);
 setText("[data-timeline3-time]", cfg.timeline3Time);
 setText("[data-timeline3-label]", cfg.timeline3Label);
 setText("[data-quote]", cfg.quote);
-setText("[data-memory-caption-1]", cfg.memoryCaption1);
-setText("[data-memory-caption-2]", cfg.memoryCaption2);
+if(cfg.memoryCaption1Html){
+  setHtml("[data-memory-caption-1]", cfg.memoryCaption1Html);
+}else{
+  setText("[data-memory-caption-1]", cfg.memoryCaption1);
+}
+if(cfg.memoryCaption2Html){
+  setHtml("[data-memory-caption-2]", cfg.memoryCaption2Html);
+}else{
+  setText("[data-memory-caption-2]", cfg.memoryCaption2);
+}
 
-if(cfg.countdownNote){
+if(cfg.countdownNoteHtml){
+  setHtml("[data-countdown-note]", cfg.countdownNoteHtml);
+}else if(cfg.countdownNote){
   document.querySelectorAll("[data-countdown-note]").forEach(el => {
     el.innerHTML = String(cfg.countdownNote).split("\n").map(line => line.replace(/</g,"&lt;")).join("<br>");
   });
