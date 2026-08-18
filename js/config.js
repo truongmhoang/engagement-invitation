@@ -1,34 +1,68 @@
 window.WEDDING_CONFIG = {
-  groom: "TRUONG MANH HOANG",
-  bride: "LƯƠNG THÚY LINH",
+  openingGroom: "Truong Manh Hoang",
+  openingBride: "Lương Thuý Linh",
+
+  groomDisplay: "Truong Hoang",
+  brideDisplay: "Thuý Linh",
+  groomSignature: "Truong",
+  brideSignature: "Linh",
+  groomRole: "Út Nam",
+  brideRole: "Út Nữ",
+
   weddingDate: "2026-10-25T12:00:00",
-  dateText: "25 • 10 • 2026",
-  invitationText: "Trân trọng kính mời bạn đến chung vui trong ngày trọng đại của chúng mình.",
+  dateDots: "25 • 10 • 2026",
+  weekday: "CHỦ NHẬT",
+  weekdayTitle: "Chủ Nhật",
+  day: "25",
+  month: "THÁNG 10",
+  monthShort: "Tháng 10",
+  year: "2026",
 
-  groomParents: "Ông Hoàng Thế Phiệt & Bà Bùi Thị Là",
-  brideParents: "Ông Lương Sum & Bà Huỳnh Thị Muối",
+  heroTime: "12:00 PM",
+  ceremonyTitle: "LỄ ĐÍNH HÔN",
+  ceremonyDate: "25.10.2026",
+  ceremonyTimeLong: "Lúc 09 giờ 00 phút",
+  ceremonyHomeNote: "Lễ đính hôn diễn ra tại tư gia.",
+  lunarDate: "(Nhằm ngày 16 tháng 09 năm Bính Ngọ)",
 
-  ceremonyTitle: "Lễ Đính Hôn",
-  ceremonyGuestTime: "11:00 AM • Đón khách",
-  ceremonyTime: "12:00 PM • Khai tiệc",
-  ceremonyDate: "Chủ Nhật, 25/10/2026",
-  venueName: "Nhà hàng Tiệc Cưới White Palace",
+  groomFather: "Ông: HOÀNG THẾ PHIỆT",
+  groomMother: "Bà: BÙI THỊ LÀ",
+  groomAddress: "USA",
+
+  brideFather: "Ông: LƯƠNG SUM",
+  brideMother: "Bà: HUỲNH THỊ MUỐI",
+  brideAddress: "TP Hồ Chí Minh",
+
+  eventCardTitle: "TIỆC ĐÍNH HÔN",
+  venueShort: "White Palace",
+  eventHall: "Sảnh: Felix Hall",
+  eventTime: "12:00 PM",
+
+  venueName: "WHITE PALACE VÕ VĂN KIỆT",
   venueAddress: "59 Đường Võ Văn Kiệt, Phường An Lạc, TP.HCM",
+  mapUrl: "https://www.google.com/maps/place/White+Palace+V%C3%B5+V%C4%83n+Ki%E1%BB%87t/@10.7232591,106.6116388,17z/",
+  mapEmbedUrl: "https://www.google.com/maps?q=White%20Palace%2059%20V%C3%B5%20V%C4%83n%20Ki%E1%BB%87t%20TPHCM&output=embed",
 
-  mapUrl: "https://www.google.com/maps/place/White+Palace+V%C3%B5+V%C4%83n+Ki%E1%BB%87t/@10.7232591,106.6116388,17z/data=!3m1!4b1!4m6!3m5!1s0x31752dc82ca47041:0xd7e9915c26b5adae!8m2!3d10.7232591!4d106.6142084!16s%2Fg%2F11sw13brp7?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D",
-  groomPhone: "0000",
-  bridePhone: "+84 0000",
+  timeline1Time: "11:00 AM",
+  timeline1Label: "Đón khách",
+  timeline2Time: "11:00 AM",
+  timeline2Label: "Chụp hình",
+  timeline3Time: "12:00 PM",
+  timeline3Label: "Khai tiệc",
 
-  storyTitle: "Câu chuyện của chúng mình",
-  storyText: "Từ những khoảnh khắc giản dị, chúng mình đã cùng nhau viết nên một hành trình thật đẹp. Và hôm nay, hành trình ấy bước sang một chương mới.",
+  musicTitle: "Beautiful In White",
 
-  shareTitle: "Truong & Linh - Engaged Invitation",
-  shareDescription: "Trân trọng kính mời bạn đến chung vui cùng Truong & Linh.",
-  shareImage: "https://YOUR-DOMAIN.com/images/share.jpg",
+  quote: "“Nếu trong ngày trọng đại này có sự hiện diện, chứng kiến và lời chúc phúc của bạn, niềm hạnh phúc của chúng mình sẽ càng thêm trọn vẹn.”",
 
-  // RSVP:
-  // Dán endpoint Formspree của bạn vào đây, ví dụ:
-  // "https://docs.google.com/forms/d/e/1FAIpQLSdUILKjsmeI3s7shpgLkxNQUK7X1UhHKNPrOvqT0CSyTGAYKw/viewform"
-  // Để trống nếu chưa kết nối.
-  rsvpEndpoint: ""
+  googleSheetsEndpoint: "",
+  googleSheetsTabName: "RSVP",
+
+  petalEffect: {
+    enabled: true,
+    maxPetals: 10,
+    spawnMin: 760,
+    spawnMax: 1250,
+    durationMin: 10,
+    durationMax: 16
+  }
 };
