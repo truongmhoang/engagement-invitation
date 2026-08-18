@@ -82,41 +82,6 @@ if(cfg.countdownNoteHtml){
   });
 }
 
-/* =========================================================
-   V28 — CINEMATIC TYPOGRAPHY
-   Tách các tiêu đề quan trọng theo ký tự để tạo hiệu ứng
-   cascade sang trọng, vẫn giữ aria-label cho screen reader.
-   ========================================================= */
-function splitLuxuryLetters(){
-  const segmenter = (typeof Intl !== "undefined" && Intl.Segmenter)
-    ? new Intl.Segmenter("vi", {granularity:"grapheme"})
-    : null;
-
-  document.querySelectorAll("[data-letter-reveal]").forEach(el => {
-    if(el.dataset.lettersReady === "true") return;
-    const raw = (el.textContent || "").trim();
-    if(!raw) return;
-
-    const glyphs = segmenter
-      ? Array.from(segmenter.segment(raw), item => item.segment)
-      : Array.from(raw);
-
-    el.setAttribute("aria-label", raw);
-    el.textContent = "";
-    glyphs.forEach((glyph, index) => {
-      const span = document.createElement("span");
-      span.className = glyph.trim() ? "lux-char" : "lux-char lux-space";
-      span.setAttribute("aria-hidden", "true");
-      span.style.setProperty("--char-i", String(index));
-      span.textContent = glyph === " " ? "\u00a0" : glyph;
-      el.appendChild(span);
-    });
-    el.dataset.lettersReady = "true";
-    el.classList.add("letter-reveal");
-  });
-}
-splitLuxuryLetters();
-
 if(cfg.shareTitle) document.title = cfg.shareTitle;
 setMeta("og:title", cfg.shareTitle);
 setMeta("og:description", cfg.shareDescription);
@@ -369,6 +334,101 @@ function updateCountdown(){
 updateCountdown();
 setInterval(updateCountdown,1000);
 
+
+/* =========================================================
+   V29 — SIGNATURE MOTION ENGINE
+   - Title: từng ký tự bật lên, xoay 3D + blur rồi khóa nét
+   - Copy dài: từng từ được mở như màn lụa
+   - Tên hero/profile: letter cascade có nhịp
+   ========================================================= */
+function prepareCharFx(el, extraClass=""){
+  if(!el || el.dataset.textFxReady === "1") return;
+  const raw = el.textContent || "";
+  const text = raw.replace(/\s+/g," ").trim();
+  if(!text) return;
+
+  el.dataset.textFxReady = "1";
+  el.setAttribute("aria-label", text);
+  el.textContent = "";
+  el.classList.add("textfx-chars");
+  if(extraClass) el.classList.add(extraClass);
+
+  const frag = document.createDocumentFragment();
+  Array.from(text).forEach((char,index) => {
+    const span = document.createElement("span");
+    span.className = char === " " ? "fx-char fx-space" : "fx-char";
+    span.setAttribute("aria-hidden","true");
+    span.style.setProperty("--char-i", index);
+    span.textContent = char === " " ? "\u00A0" : char;
+    frag.appendChild(span);
+  });
+  el.appendChild(frag);
+}
+
+function prepareWordFx(el, extraClass=""){
+  if(!el || el.dataset.textFxReady === "1") return;
+  const text = (el.textContent || "").replace(/\s+/g," ").trim();
+  if(!text) return;
+
+  el.dataset.textFxReady = "1";
+  el.setAttribute("aria-label", text);
+  el.textContent = "";
+  el.classList.add("textfx-words");
+  if(extraClass) el.classList.add(extraClass);
+
+  const words = text.split(" ");
+  const frag = document.createDocumentFragment();
+  words.forEach((word,index) => {
+    const wrap = document.createElement("span");
+    wrap.className = "fx-word-wrap";
+    wrap.setAttribute("aria-hidden","true");
+    wrap.style.setProperty("--word-i", index);
+    const inner = document.createElement("span");
+    inner.className = "fx-word";
+    inner.textContent = word;
+    wrap.appendChild(inner);
+    frag.appendChild(wrap);
+    if(index < words.length - 1) frag.appendChild(document.createTextNode(" "));
+  });
+  el.appendChild(frag);
+}
+
+// Các heading quan trọng: cinematic letter-bloom
+[
+  ".ceremony-title",
+  ".event-card-title",
+  ".venue-heading",
+  ".memories-heading",
+  ".countdown-script",
+  ".rsvp-script"
+].forEach(selector => document.querySelectorAll(selector).forEach(el => prepareCharFx(el,"fx-lux-title")));
+
+// Tên mở thiệp: chạy ký tự ngay khi load
+[".opening-person-top", ".opening-person-bottom"].forEach(selector => {
+  document.querySelectorAll(selector).forEach(el => prepareCharFx(el,"opening-letter-fx"));
+});
+requestAnimationFrame(() => requestAnimationFrame(() => document.querySelector(".opening-card")?.classList.add("fx-live")));
+
+// Hero và profile: cascade riêng cho tên cô dâu/chú rể
+[".couple-line [data-groom-display]", ".couple-line [data-bride-display]"].forEach(selector => {
+  document.querySelectorAll(selector).forEach(el => prepareCharFx(el,"hero-letter-fx"));
+});
+document.querySelectorAll(".profile-name-pill strong").forEach(el => prepareCharFx(el,"profile-letter-fx"));
+
+// Các đoạn văn / địa chỉ: mở từng từ, không còn slide nguyên khối đơn điệu
+[
+  ".invite-copy-line",
+  ".ceremony-home-note",
+  ".venue-address",
+  ".quote-block",
+  ".countdown-message",
+  ".thankyou-copy p"
+].forEach(selector => document.querySelectorAll(selector).forEach(el => prepareWordFx(el,"fx-silk-copy")));
+
+// Bilingual: Hoa chạy từng ký tự, Việt mở từng từ
+ document.querySelectorAll(".bilingual-han").forEach(el => prepareCharFx(el,"fx-bilingual-han"));
+ document.querySelectorAll(".bilingual-vi").forEach(el => prepareWordFx(el,"fx-bilingual-vi"));
+
 /* =========================================================
    HIỆU ỨNG KHI CUỘN — tách từng element thay vì cả section
    ========================================================= */
@@ -378,10 +438,6 @@ document.querySelectorAll(".site-shell section").forEach(section => {
     const type = el.dataset.reveal || "";
     let delay = Math.min(index * 0.065, 0.32);
     if(type === "timeline-left" || type === "timeline-right") delay = Math.min(index * 0.095, 0.34);
-    if(type === "lux-title") delay = Math.min(index * 0.045, 0.16);
-    if(type === "silk") delay = Math.min(index * 0.055, 0.24);
-    if(type === "script-draw") delay = Math.min(index * 0.05, 0.18);
-    if(type === "card-premium") delay = 0.08;
     if(type === "route") delay = 0.22;
     if(type === "map") delay = 0.16;
     el.style.setProperty("--reveal-delay", `${delay}s`);
