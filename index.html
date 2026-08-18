@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italianno&family=Mrs+Saint+Delafield&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=25" onerror="this.onerror=null;this.href='css/style.css?v=25'">
+  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=26" onerror="this.onerror=null;this.href='css/style.css?v=26'">
 </head>
 <body class="locked">
   <!-- =====================================================
@@ -255,22 +255,21 @@
 
     <!-- 7 / OUR MEMORIES -->
     <section class="memories-section floral-bg">
+      <!-- Collage chính: giữ ảnh lớn gallery-5, hai ảnh nhỏ dùng file RIÊNG -->
       <div class="memory-grid memory-grid-a" data-reveal="up">
-        <!-- Giữ nguyên ảnh lớn bên trái -->
         <img class="memory-tall" src="images/gallery-5.jpg" alt="OUR MEMORIES - ảnh lớn bên trái" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
-
-        <!-- Ảnh nhỏ trên: file RIÊNG, không dùng gallery-2 -->
-        <img class="memory-right-top" src="images/memory-right-top.jpg" alt="OUR MEMORIES - ảnh nhỏ trên bên phải" loading="lazy" onerror="this.onerror=null;this.src='images/gallery-4.jpg'">
-
-        <!-- Ảnh nhỏ dưới: file RIÊNG, không dùng gallery-3 -->
-        <img class="memory-right-bottom" src="images/memory-right-bottom.jpg" alt="OUR MEMORIES - ảnh nhỏ dưới bên phải" loading="lazy" onerror="this.onerror=null;this.src='images/gallery-6.jpg'">
+        <img src="images/memory-right-top.jpg" alt="OUR MEMORIES - ảnh nhỏ phía trên bên phải" loading="lazy">
+        <img src="images/memory-right-bottom.jpg" alt="OUR MEMORIES - ảnh nhỏ phía dưới bên phải" loading="lazy">
       </div>
       <div class="memory-caption bilingual-caption" data-memory-caption-1 data-reveal="up"></div>
 
+      <!-- Ảnh ngang lớn giữ nguyên gallery-4 -->
       <div class="memory-wide" data-reveal="zoom">
-        <img src="images/gallery-4.jpg" alt="Kỷ niệm 4" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
+        <img src="images/gallery-4.jpg" alt="OUR MEMORIES - ảnh ngang lớn" loading="lazy" onerror="this.onerror=null;this.src='images/invitation.jpg'">
       </div>
       <div class="memory-caption bilingual-caption" data-memory-caption-2 data-reveal="up"></div>
+
+      <!-- V26: ĐÃ XÓA hoàn toàn cụm 4 ảnh nằm ngay phía trên COUNTDOWN -->
     </section>
 
     <!-- 8 / COUNTDOWN -->
@@ -354,8 +353,8 @@
           next();
         });
       }
-      loadFirst(["config.js?v=25", "js/config.js?v=25"])
-        .then(function(){ return loadFirst(["script.js?v=25", "js/script.js?v=25"]); })
+      loadFirst(["config.js?v=26", "js/config.js?v=26"])
+        .then(function(){ return loadFirst(["script.js?v=26", "js/script.js?v=26"]); })
         .catch(function(err){ console.error(err); });
     })();
   </script>
