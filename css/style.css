@@ -2017,3 +2017,366 @@ footer{display:none}
   .bilingual-caption .bilingual-vi{max-width:292px;font-size:13px;line-height:1.72}
   .countdown-message{font-size:14px;line-height:1.78}
 }
+
+/* =========================================================
+   V28 — CINEMATIC TYPOGRAPHY + PREMIUM EVENT CARD
+   Chủ ý: mỗi nhóm chữ có chuyển động khác nhau để không nhàm.
+   ========================================================= */
+
+:root{
+  --lux-gold:#ad865c;
+  --lux-gold-soft:#d8c1a2;
+  --lux-deep:#211b17;
+  --lux-ivory:#fffdf8;
+}
+
+/* 1) Tiêu đề quan trọng: từng ký tự đi lên theo nhịp, hơi xoay rồi khóa nét */
+[data-reveal="lux-title"].letter-reveal{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  overflow:visible;
+}
+.letter-reveal .lux-char{
+  display:inline-block;
+  opacity:0;
+  transform:translate3d(0,28px,0) rotateX(72deg) rotateZ(2.5deg) scale(.96);
+  transform-origin:50% 100%;
+  filter:blur(4px);
+  will-change:transform,opacity,filter;
+  transition:
+    opacity .58s ease,
+    filter .72s ease,
+    transform 1.08s cubic-bezier(.12,.9,.18,1.14);
+  transition-delay:calc(var(--reveal-delay,0s) + (var(--char-i) * 38ms));
+}
+.letter-reveal .lux-char.lux-space{width:.28em}
+.letter-reveal.is-visible .lux-char{
+  opacity:1;
+  transform:translate3d(0,0,0) rotateX(0) rotateZ(0) scale(1);
+  filter:blur(0);
+}
+
+/* 2) Body text: kiểu "lụa mở màn" thay vì cứ trượt trái/phải */
+[data-reveal="silk"]{
+  opacity:0;
+  transform:translateY(12px);
+  filter:blur(2px);
+  clip-path:inset(0 100% 0 0);
+  transition:
+    clip-path 1.18s cubic-bezier(.18,.86,.2,1),
+    transform .95s cubic-bezier(.18,.86,.2,1),
+    opacity .65s ease,
+    filter .8s ease;
+}
+[data-reveal="silk"].is-visible{
+  opacity:1;
+  transform:none;
+  filter:none;
+  clip-path:inset(0 0 0 0);
+}
+
+/* 3) Script heading: cảm giác nét chữ được mở dần */
+[data-reveal="script-draw"]{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path 1.55s cubic-bezier(.2,.82,.18,1);
+}
+[data-reveal="script-draw"].is-visible{clip-path:inset(0 0 0 0)}
+
+/* 4) Con số/ngày: bật nhẹ theo chiều sâu, không "zoom" thô */
+[data-reveal="number-pop"]{
+  opacity:0;
+  transform:translateY(18px) scale(.9);
+  filter:blur(3px);
+  transition:
+    opacity .55s ease,
+    filter .72s ease,
+    transform 1s cubic-bezier(.12,.9,.18,1.16);
+}
+[data-reveal="number-pop"].is-visible{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+[data-reveal="date-rise"]{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+}
+[data-reveal="date-rise"] > *{
+  opacity:0;
+  transform:translateY(18px) scale(.96);
+  filter:blur(2px);
+  transition:opacity .58s ease,filter .72s ease,transform .9s cubic-bezier(.16,.88,.2,1.08);
+}
+[data-reveal="date-rise"].is-visible > *{opacity:1;transform:none;filter:none}
+[data-reveal="date-rise"].is-visible > *:nth-child(1){transition-delay:.06s}
+[data-reveal="date-rise"].is-visible > *:nth-child(2){transition-delay:.17s}
+[data-reveal="date-rise"].is-visible > *:nth-child(3){transition-delay:.28s}
+[data-reveal="date-rise"].is-visible > *:nth-child(4){transition-delay:.39s}
+
+/* 5) Lời mời: hai dòng vào mềm, tên đôi khóa lại ở trung tâm */
+.invite-copy[data-reveal="invite"]{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+}
+.invite-copy .invite-copy-line,
+.invite-copy .invite-couple{
+  display:block;
+  opacity:0;
+  will-change:transform,opacity,filter;
+  filter:blur(2px);
+  transition:opacity .58s ease,filter .7s ease,transform 1.05s cubic-bezier(.14,.88,.2,1.08);
+}
+.invite-copy .invite-copy-line:nth-child(1){transform:translateX(-54px)}
+.invite-copy .invite-copy-line:nth-child(2){transform:translateX(54px)}
+.invite-copy .invite-couple{transform:translateY(15px) scale(.96)}
+.invite-copy.is-visible .invite-copy-line,
+.invite-copy.is-visible .invite-couple{opacity:1;filter:none;transform:none}
+.invite-copy.is-visible .invite-copy-line:nth-child(1){transition-delay:.08s}
+.invite-copy.is-visible .invite-copy-line:nth-child(2){transition-delay:.20s}
+.invite-copy.is-visible .invite-couple{transition-delay:.34s}
+
+/* =========================================================
+   TIỆC ĐÍNH HÔN — trang trọng/premium hơn rõ rệt
+   ========================================================= */
+.event-card{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  width:100%;
+  margin-top:18px;
+  padding:46px 27px 38px;
+  border:1px solid transparent;
+  border-radius:40px;
+  background:
+    linear-gradient(180deg,rgba(255,254,250,.985),rgba(247,240,231,.985)) padding-box,
+    linear-gradient(135deg,#dfccb2 0%,#9e7954 22%,#eadcc8 49%,#a57d54 75%,#e7d6bf 100%) border-box;
+  box-shadow:
+    0 28px 54px rgba(55,42,32,.17),
+    0 10px 20px rgba(145,109,72,.10),
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -1px 0 rgba(178,150,117,.18);
+}
+.event-card > *{position:relative;z-index:3}
+.event-card::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:10px;
+  border:1px solid rgba(169,135,96,.38);
+  border-radius:31px;
+  pointer-events:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.65),
+    inset 0 0 28px rgba(194,165,128,.055);
+}
+.event-card::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:-42%;
+  bottom:-42%;
+  left:-72%;
+  width:38%;
+  opacity:0;
+  transform:skewX(-17deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),rgba(244,222,191,.26),transparent);
+  pointer-events:none;
+}
+.event-card[data-reveal="card-premium"]{
+  opacity:0;
+  transform:translateY(34px) scale(.94);
+  filter:blur(4px);
+  clip-path:inset(3% 3% 3% 3% round 42px);
+  transition:
+    opacity .7s ease,
+    filter .85s ease,
+    transform 1.18s cubic-bezier(.12,.9,.18,1.08),
+    clip-path 1.18s cubic-bezier(.12,.9,.18,1.08);
+}
+.event-card[data-reveal="card-premium"].is-visible{
+  opacity:1;
+  transform:none;
+  filter:none;
+  clip-path:inset(0 round 40px);
+}
+.event-card[data-reveal="card-premium"].is-visible::after{
+  animation:eventCardSheen 1.55s .55s cubic-bezier(.18,.7,.25,1) 1 both;
+}
+@keyframes eventCardSheen{
+  0%{left:-72%;opacity:0}
+  18%{opacity:.68}
+  70%{opacity:.32}
+  100%{left:138%;opacity:0}
+}
+
+/* Huy hiệu nhẫn — trang trọng hơn, có đường kẻ hai bên */
+.event-rings-mark{
+  position:relative;
+  width:68px;
+  height:68px;
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(176,140,99,.62);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 25%,rgba(255,255,255,.95),rgba(255,252,246,.74) 42%,rgba(225,207,183,.42) 100%);
+  color:#9f7850;
+  font-size:38px;
+  box-shadow:0 7px 18px rgba(116,84,54,.09),inset 0 0 0 4px rgba(255,255,255,.48);
+  transform:none;
+}
+.event-rings-mark::before,
+.event-rings-mark::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:58px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(164,126,86,.62));
+}
+.event-rings-mark::before{right:calc(100% + 12px)}
+.event-rings-mark::after{left:calc(100% + 12px);transform:scaleX(-1)}
+.event-card .event-rings-mark span+span{margin-left:-12px}
+
+.event-card-title{
+  margin:0 0 18px;
+  color:#241c17;
+  font:600 34px/1.02 var(--serif);
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  text-shadow:0 1px 0 rgba(255,255,255,.9);
+}
+.event-card-title::after{
+  content:"";
+  display:block;
+  width:112px;
+  height:1px;
+  margin:16px auto 0;
+  background:linear-gradient(90deg,transparent 0%,rgba(158,120,80,.9) 25%,rgba(217,191,157,.98) 50%,rgba(158,120,80,.9) 75%,transparent 100%);
+  box-shadow:0 1px 0 rgba(255,255,255,.7);
+}
+.event-card-place{
+  margin-bottom:7px;
+  color:#302720;
+  font-size:20px;
+  letter-spacing:.015em;
+}
+.event-card-hall{
+  display:inline-block;
+  margin:0 auto 15px;
+  padding:0 0 5px;
+  color:#9c7249;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:.055em;
+  border-bottom:1px solid rgba(168,128,87,.32);
+}
+.event-card-time{
+  margin:1px 0 26px;
+  color:#1c1713;
+  font-size:23px;
+  font-weight:500;
+  letter-spacing:.008em;
+}
+.event-date-grid{
+  position:relative;
+  margin-top:4px;
+  padding-top:2px;
+}
+.event-date-grid::before{
+  content:"";
+  position:absolute;
+  left:12%;right:12%;top:-10px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(151,119,86,.32),transparent);
+}
+.event-date-grid>span{
+  color:#493a2f;
+  border-color:rgba(142,118,93,.62);
+}
+.event-date-grid strong{
+  color:#1d1713;
+  font-size:72px;
+  font-weight:600;
+  text-shadow:0 1px 0 rgba(255,255,255,.9);
+}
+.event-card .lunar{
+  margin-top:18px;
+  color:#756b61;
+  font-size:15px;
+}
+
+/* LỄ ĐÍNH HÔN giữ trang nhã để nhường trọng tâm cho khối tiệc */
+.invitation-section .ceremony-title{
+  color:#4f4942;
+  font-weight:500;
+  letter-spacing:.05em;
+}
+.invitation-section .ceremony-date{
+  color:#35302b;
+  font-weight:560;
+}
+.invitation-section .ceremony-time-long{color:#4f4943}
+.invitation-section .ceremony-home-note{color:#8a8178}
+
+/* Một chút nhịp sống cho SAVE THE DATE, không lặp vô tận */
+body.invitation-opened .save-date{
+  animation:saveDateBreath 1.25s .7s cubic-bezier(.16,.85,.2,1) 1 both;
+}
+@keyframes saveDateBreath{
+  0%{letter-spacing:-.03em;filter:blur(1.2px)}
+  55%{letter-spacing:.005em;filter:blur(0)}
+  100%{letter-spacing:-.03em;filter:blur(0)}
+}
+
+/* Chữ ký OUR MEMORIES: thêm nét "mực" hiện dần */
+.signature-block span{
+  filter:blur(1.4px);
+  transition-property:opacity,transform,filter;
+}
+.signature-block.is-visible span{filter:blur(0)}
+
+@media (max-width:390px){
+  .event-card{padding:39px 19px 33px;border-radius:35px}
+  .event-card::before{inset:9px;border-radius:27px}
+  .event-rings-mark{width:60px;height:60px;margin-bottom:16px;font-size:34px}
+  .event-rings-mark::before,.event-rings-mark::after{width:42px}
+  .event-rings-mark::before{right:calc(100% + 9px)}
+  .event-rings-mark::after{left:calc(100% + 9px)}
+  .event-card-title{font-size:29px;letter-spacing:.07em;margin-bottom:16px}
+  .event-card-title::after{width:92px;margin-top:13px}
+  .event-card-place{font-size:18px}
+  .event-card-hall{font-size:14px;margin-bottom:13px}
+  .event-card-time{font-size:20px;margin-bottom:23px}
+  .event-date-grid{grid-template-columns:1fr 104px 1fr}
+  .event-date-grid>span{font-size:16px}
+  .event-date-grid strong{font-size:62px}
+  .event-card .lunar{font-size:14px;margin-top:15px}
+  .letter-reveal .lux-char{transition-delay:calc(var(--reveal-delay,0s) + (var(--char-i) * 31ms))}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .letter-reveal .lux-char,
+  [data-reveal="silk"],
+  [data-reveal="script-draw"],
+  [data-reveal="number-pop"],
+  [data-reveal="date-rise"] > *,
+  .invite-copy .invite-copy-line,
+  .invite-copy .invite-couple,
+  .event-card[data-reveal="card-premium"]{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    clip-path:none!important;
+    transition:none!important;
+  }
+  .event-card::after{display:none!important}
+}

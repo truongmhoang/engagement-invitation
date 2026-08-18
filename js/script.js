@@ -82,6 +82,41 @@ if(cfg.countdownNoteHtml){
   });
 }
 
+/* =========================================================
+   V28 — CINEMATIC TYPOGRAPHY
+   Tách các tiêu đề quan trọng theo ký tự để tạo hiệu ứng
+   cascade sang trọng, vẫn giữ aria-label cho screen reader.
+   ========================================================= */
+function splitLuxuryLetters(){
+  const segmenter = (typeof Intl !== "undefined" && Intl.Segmenter)
+    ? new Intl.Segmenter("vi", {granularity:"grapheme"})
+    : null;
+
+  document.querySelectorAll("[data-letter-reveal]").forEach(el => {
+    if(el.dataset.lettersReady === "true") return;
+    const raw = (el.textContent || "").trim();
+    if(!raw) return;
+
+    const glyphs = segmenter
+      ? Array.from(segmenter.segment(raw), item => item.segment)
+      : Array.from(raw);
+
+    el.setAttribute("aria-label", raw);
+    el.textContent = "";
+    glyphs.forEach((glyph, index) => {
+      const span = document.createElement("span");
+      span.className = glyph.trim() ? "lux-char" : "lux-char lux-space";
+      span.setAttribute("aria-hidden", "true");
+      span.style.setProperty("--char-i", String(index));
+      span.textContent = glyph === " " ? "\u00a0" : glyph;
+      el.appendChild(span);
+    });
+    el.dataset.lettersReady = "true";
+    el.classList.add("letter-reveal");
+  });
+}
+splitLuxuryLetters();
+
 if(cfg.shareTitle) document.title = cfg.shareTitle;
 setMeta("og:title", cfg.shareTitle);
 setMeta("og:description", cfg.shareDescription);
@@ -343,6 +378,10 @@ document.querySelectorAll(".site-shell section").forEach(section => {
     const type = el.dataset.reveal || "";
     let delay = Math.min(index * 0.065, 0.32);
     if(type === "timeline-left" || type === "timeline-right") delay = Math.min(index * 0.095, 0.34);
+    if(type === "lux-title") delay = Math.min(index * 0.045, 0.16);
+    if(type === "silk") delay = Math.min(index * 0.055, 0.24);
+    if(type === "script-draw") delay = Math.min(index * 0.05, 0.18);
+    if(type === "card-premium") delay = 0.08;
     if(type === "route") delay = 0.22;
     if(type === "map") delay = 0.16;
     el.style.setProperty("--reveal-delay", `${delay}s`);
