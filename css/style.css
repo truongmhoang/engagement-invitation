@@ -2017,3 +2017,12 @@ footer{display:none}
   .bilingual-caption .bilingual-vi{max-width:292px;font-size:13px;line-height:1.72}
   .countdown-message{font-size:14px;line-height:1.78}
 }
+
+
+/* V25 — image mapping only. Bố cục/hiệu ứng V22 được giữ nguyên. */
+.memory-grid-a .memory-right-top,
+.memory-grid-a .memory-right-bottom{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
