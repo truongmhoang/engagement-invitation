@@ -2018,529 +2018,365 @@ footer{display:none}
   .countdown-message{font-size:14px;line-height:1.78}
 }
 
-
 /* =========================================================
-   V29 — SIGNATURE MOTION / IMPRESSIVE TEXT
+   V28 — CINEMATIC TYPOGRAPHY + PREMIUM EVENT CARD
+   Chủ ý: mỗi nhóm chữ có chuyển động khác nhau để không nhàm.
    ========================================================= */
 
-/* 1) LETTER BLOOM — cinematic nhưng vẫn sang */
-.textfx-chars{
-  --fx-step:34ms;
-}
-.textfx-chars .fx-char{
-  display:inline-block;
-  opacity:0;
-  transform:translate3d(0,.92em,0) rotateX(-78deg) rotateZ(2.5deg) scale(.96);
-  transform-origin:50% 100%;
-  filter:blur(7px);
-  transition:
-    transform 1.02s cubic-bezier(.14,.86,.18,1),
-    opacity .56s ease,
-    filter .86s ease;
-  transition-delay:calc(var(--reveal-delay,0s) + var(--char-i) * var(--fx-step));
-  will-change:transform,opacity,filter;
-}
-.textfx-chars .fx-space{width:.24em}
-.textfx-chars.is-visible .fx-char,
-.profile-section.profile-in .profile-letter-fx .fx-char{
-  opacity:1;
-  transform:none;
-  filter:blur(0);
+:root{
+  --lux-gold:#ad865c;
+  --lux-gold-soft:#d8c1a2;
+  --lux-deep:#211b17;
+  --lux-ivory:#fffdf8;
 }
 
-/* Heading quan trọng có tracking settle + ánh champagne rất nhẹ */
-.fx-lux-title{
-  position:relative;
+/* 1) Tiêu đề quan trọng: từng ký tự đi lên theo nhịp, hơi xoay rồi khóa nét */
+[data-reveal="lux-title"].letter-reveal{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
   overflow:visible;
 }
-.fx-lux-title .fx-char{
-  background:linear-gradient(180deg,#181411 0%,#30251d 62%,#8b6a48 140%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.fx-lux-title::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:-10px;
-  width:0;
-  height:1px;
+.letter-reveal .lux-char{
+  display:inline-block;
   opacity:0;
-  transform:translateX(-50%);
-  background:linear-gradient(90deg,transparent,#c9a979 25%,#9c7448 50%,#c9a979 75%,transparent);
-  transition:width .9s .48s cubic-bezier(.16,1,.3,1),opacity .35s .48s ease;
+  transform:translate3d(0,28px,0) rotateX(72deg) rotateZ(2.5deg) scale(.96);
+  transform-origin:50% 100%;
+  filter:blur(4px);
+  will-change:transform,opacity,filter;
+  transition:
+    opacity .58s ease,
+    filter .72s ease,
+    transform 1.08s cubic-bezier(.12,.9,.18,1.14);
+  transition-delay:calc(var(--reveal-delay,0s) + (var(--char-i) * 38ms));
 }
-.fx-lux-title.is-visible::after{width:74px;opacity:.82}
+.letter-reveal .lux-char.lux-space{width:.28em}
+.letter-reveal.is-visible .lux-char{
+  opacity:1;
+  transform:translate3d(0,0,0) rotateX(0) rotateZ(0) scale(1);
+  filter:blur(0);
+}
 
-/* 2) SILK REVEAL — từng từ bung ra khỏi một mask */
-.textfx-words .fx-word-wrap{
-  display:inline-block;
-  overflow:hidden;
-  vertical-align:bottom;
-}
-.textfx-words .fx-word{
-  display:inline-block;
+/* 2) Body text: kiểu "lụa mở màn" thay vì cứ trượt trái/phải */
+[data-reveal="silk"]{
   opacity:0;
-  transform:translate3d(0,1.15em,0) skewY(3deg);
-  clip-path:inset(0 0 100% 0);
+  transform:translateY(12px);
+  filter:blur(2px);
+  clip-path:inset(0 100% 0 0);
+  transition:
+    clip-path 1.18s cubic-bezier(.18,.86,.2,1),
+    transform .95s cubic-bezier(.18,.86,.2,1),
+    opacity .65s ease,
+    filter .8s ease;
+}
+[data-reveal="silk"].is-visible{
+  opacity:1;
+  transform:none;
+  filter:none;
+  clip-path:inset(0 0 0 0);
+}
+
+/* 3) Script heading: cảm giác nét chữ được mở dần */
+[data-reveal="script-draw"]{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path 1.55s cubic-bezier(.2,.82,.18,1);
+}
+[data-reveal="script-draw"].is-visible{clip-path:inset(0 0 0 0)}
+
+/* 4) Con số/ngày: bật nhẹ theo chiều sâu, không "zoom" thô */
+[data-reveal="number-pop"]{
+  opacity:0;
+  transform:translateY(18px) scale(.9);
   filter:blur(3px);
   transition:
-    transform .86s cubic-bezier(.16,.9,.22,1),
-    clip-path .82s cubic-bezier(.16,.9,.22,1),
-    opacity .42s ease,
-    filter .68s ease;
-  transition-delay:calc(var(--reveal-delay,0s) + var(--word-i) * 46ms);
+    opacity .55s ease,
+    filter .72s ease,
+    transform 1s cubic-bezier(.12,.9,.18,1.16);
 }
-.textfx-words.is-visible .fx-word{
+[data-reveal="number-pop"].is-visible{
   opacity:1;
   transform:none;
-  clip-path:inset(0 0 0 0);
-  filter:blur(0);
+  filter:none;
 }
+[data-reveal="date-rise"]{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+}
+[data-reveal="date-rise"] > *{
+  opacity:0;
+  transform:translateY(18px) scale(.96);
+  filter:blur(2px);
+  transition:opacity .58s ease,filter .72s ease,transform .9s cubic-bezier(.16,.88,.2,1.08);
+}
+[data-reveal="date-rise"].is-visible > *{opacity:1;transform:none;filter:none}
+[data-reveal="date-rise"].is-visible > *:nth-child(1){transition-delay:.06s}
+[data-reveal="date-rise"].is-visible > *:nth-child(2){transition-delay:.17s}
+[data-reveal="date-rise"].is-visible > *:nth-child(3){transition-delay:.28s}
+[data-reveal="date-rise"].is-visible > *:nth-child(4){transition-delay:.39s}
 
-/* Opening: tên nở từng chữ ngay trên màn mở thiệp */
-.opening-letter-fx .fx-char{
-  transition-delay:calc(.16s + var(--char-i) * 42ms);
+/* 5) Lời mời: hai dòng vào mềm, tên đôi khóa lại ở trung tâm */
+.invite-copy[data-reveal="invite"]{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
 }
-.opening-card.fx-live .opening-letter-fx .fx-char{
-  opacity:1;
-  transform:none;
-  filter:blur(0);
+.invite-copy .invite-copy-line,
+.invite-copy .invite-couple{
+  display:block;
+  opacity:0;
+  will-change:transform,opacity,filter;
+  filter:blur(2px);
+  transition:opacity .58s ease,filter .7s ease,transform 1.05s cubic-bezier(.14,.88,.2,1.08);
 }
-.opening-person-bottom.opening-letter-fx .fx-char{
-  transition-delay:calc(.38s + var(--char-i) * 42ms);
-}
-
-/* Hero names: hai phía hội tụ nhưng từng ký tự vẫn có cascade */
-.hero-letter-fx .fx-char{
-  transition-delay:calc(.46s + var(--char-i) * 38ms);
-}
-body.invitation-opened .hero-letter-fx .fx-char{
-  opacity:1;
-  transform:none;
-  filter:blur(0);
-}
-
-/* 3) Profile name: pill trượt vào trước, chữ nở sau */
-.profile-letter-fx .fx-char{
-  transform:translate3d(0,1.05em,0) rotateX(-72deg);
-  transition-delay:calc(.24s + var(--char-i) * 40ms);
-}
-
-/* 4) Chinese / Vietnamese: nhịp khác nhau */
-.fx-bilingual-han{--fx-step:48ms}
-.fx-bilingual-han .fx-char{
-  transform:translate3d(-.38em,.55em,0) rotateZ(-2deg);
-}
-.fx-bilingual-vi .fx-word{
-  transition-delay:calc(.12s + var(--word-i) * 48ms);
-}
+.invite-copy .invite-copy-line:nth-child(1){transform:translateX(-54px)}
+.invite-copy .invite-copy-line:nth-child(2){transform:translateX(54px)}
+.invite-copy .invite-couple{transform:translateY(15px) scale(.96)}
+.invite-copy.is-visible .invite-copy-line,
+.invite-copy.is-visible .invite-couple{opacity:1;filter:none;transform:none}
+.invite-copy.is-visible .invite-copy-line:nth-child(1){transition-delay:.08s}
+.invite-copy.is-visible .invite-copy-line:nth-child(2){transition-delay:.20s}
+.invite-copy.is-visible .invite-couple{transition-delay:.34s}
 
 /* =========================================================
-   TIỆC ĐÍNH HÔN — CHAMPAGNE LUXURY / CEREMONIAL
+   TIỆC ĐÍNH HÔN — trang trọng/premium hơn rõ rệt
    ========================================================= */
-.premium-event-card{
+.event-card{
   position:relative;
   isolation:isolate;
   overflow:hidden;
+  width:100%;
   margin-top:18px;
-  padding:43px 26px 36px;
-  border:1.6px solid transparent;
+  padding:46px 27px 38px;
+  border:1px solid transparent;
   border-radius:40px;
   background:
-    linear-gradient(180deg,rgba(255,253,248,.97),rgba(246,238,228,.985)) padding-box,
-    linear-gradient(135deg,#9e784f 0%,#e8d4ad 22%,#fff4cf 43%,#b48a59 66%,#eadab9 85%,#8e6944 100%) border-box;
+    linear-gradient(180deg,rgba(255,254,250,.985),rgba(247,240,231,.985)) padding-box,
+    linear-gradient(135deg,#dfccb2 0%,#9e7954 22%,#eadcc8 49%,#a57d54 75%,#e7d6bf 100%) border-box;
   box-shadow:
-    0 28px 58px rgba(47,36,27,.20),
-    0 10px 24px rgba(115,86,57,.11),
+    0 28px 54px rgba(55,42,32,.17),
+    0 10px 20px rgba(145,109,72,.10),
     inset 0 1px 0 rgba(255,255,255,.96),
-    inset 0 -1px 0 rgba(180,147,107,.24);
+    inset 0 -1px 0 rgba(178,150,117,.18);
 }
-.premium-event-card::before{
+.event-card > *{position:relative;z-index:3}
+.event-card::before{
   content:"";
   position:absolute;
-  z-index:-1;
+  z-index:1;
   inset:10px;
-  border:1px solid rgba(174,139,96,.38);
+  border:1px solid rgba(169,135,96,.38);
   border-radius:31px;
+  pointer-events:none;
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.56),
-    0 0 22px rgba(191,156,111,.06);
+    inset 0 0 0 1px rgba(255,255,255,.65),
+    inset 0 0 28px rgba(194,165,128,.055);
 }
-.premium-event-card::after{
+.event-card::after{
   content:"";
   position:absolute;
   z-index:2;
-  top:-28%;
+  top:-42%;
+  bottom:-42%;
   left:-72%;
-  width:48%;
-  height:160%;
+  width:38%;
   opacity:0;
+  transform:skewX(-17deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),rgba(244,222,191,.26),transparent);
   pointer-events:none;
-  transform:skewX(-20deg);
-  background:linear-gradient(90deg,transparent,rgba(255,248,221,.72),rgba(255,255,255,.95),rgba(255,248,221,.5),transparent);
 }
-.premium-event-card.is-visible::after{
-  animation:eventChampagneSweep 1.25s .72s cubic-bezier(.22,.61,.36,1) 1 both;
+.event-card[data-reveal="card-premium"]{
+  opacity:0;
+  transform:translateY(34px) scale(.94);
+  filter:blur(4px);
+  clip-path:inset(3% 3% 3% 3% round 42px);
+  transition:
+    opacity .7s ease,
+    filter .85s ease,
+    transform 1.18s cubic-bezier(.12,.9,.18,1.08),
+    clip-path 1.18s cubic-bezier(.12,.9,.18,1.08);
 }
-@keyframes eventChampagneSweep{
+.event-card[data-reveal="card-premium"].is-visible{
+  opacity:1;
+  transform:none;
+  filter:none;
+  clip-path:inset(0 round 40px);
+}
+.event-card[data-reveal="card-premium"].is-visible::after{
+  animation:eventCardSheen 1.55s .55s cubic-bezier(.18,.7,.25,1) 1 both;
+}
+@keyframes eventCardSheen{
   0%{left:-72%;opacity:0}
-  16%{opacity:.56}
-  72%{opacity:.34}
-  100%{left:142%;opacity:0}
+  18%{opacity:.68}
+  70%{opacity:.32}
+  100%{left:138%;opacity:0}
 }
 
-.premium-event-card .event-rings-mark{
+/* Huy hiệu nhẫn — trang trọng hơn, có đường kẻ hai bên */
+.event-rings-mark{
   position:relative;
-  width:72px;
-  height:72px;
-  margin:-5px auto 14px;
-  border:1px solid rgba(173,133,82,.68);
-  border-radius:50%;
+  width:68px;
+  height:68px;
+  margin:0 auto 18px;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#a67c4c;
+  border:1px solid rgba(176,140,99,.62);
+  border-radius:50%;
   background:
-    radial-gradient(circle at 40% 30%,rgba(255,255,255,.96),rgba(244,232,213,.80) 60%,rgba(228,209,180,.54));
-  box-shadow:
-    0 7px 18px rgba(88,63,39,.11),
-    inset 0 0 0 5px rgba(255,255,255,.50);
+    radial-gradient(circle at 35% 25%,rgba(255,255,255,.95),rgba(255,252,246,.74) 42%,rgba(225,207,183,.42) 100%);
+  color:#9f7850;
+  font-size:38px;
+  box-shadow:0 7px 18px rgba(116,84,54,.09),inset 0 0 0 4px rgba(255,255,255,.48);
+  transform:none;
 }
-.premium-event-card .event-rings-mark::before,
-.premium-event-card .event-rings-mark::after{
+.event-rings-mark::before,
+.event-rings-mark::after{
   content:"";
   position:absolute;
   top:50%;
-  width:64px;
+  width:58px;
   height:1px;
-  background:linear-gradient(90deg,transparent,#b89565);
+  background:linear-gradient(90deg,transparent,rgba(164,126,86,.62));
 }
-.premium-event-card .event-rings-mark::before{right:calc(100% + 12px)}
-.premium-event-card .event-rings-mark::after{left:calc(100% + 12px);transform:scaleX(-1)}
-.premium-event-card .event-rings-mark span{
-  font-size:32px;
-  line-height:1;
-}
-.premium-event-card .event-rings-mark span+span{margin-left:-12px}
+.event-rings-mark::before{right:calc(100% + 12px)}
+.event-rings-mark::after{left:calc(100% + 12px);transform:scaleX(-1)}
+.event-card .event-rings-mark span+span{margin-left:-12px}
 
-.premium-event-card .event-card-title{
-  margin-bottom:20px;
-  font-size:35px;
-  letter-spacing:.062em;
-  color:#241a12;
-}
-.premium-event-card .event-card-title::after{
-  width:104px;
-  height:1px;
-  margin-top:15px;
-  background:linear-gradient(90deg,transparent,#d2b27f 20%,#956b3e 50%,#d2b27f 80%,transparent);
-}
-.premium-event-card .event-card-place{
-  color:#2a211b;
-  font-size:21px;
-  letter-spacing:.01em;
-}
-.premium-event-card .event-card-hall{
-  display:inline-block;
-  margin:1px auto 15px;
-  padding:5px 13px 6px;
-  border:1px solid rgba(173,135,91,.28);
-  border-radius:999px;
-  background:rgba(209,184,147,.12);
-  color:#8f6337;
-  font-size:14px;
-  letter-spacing:.055em;
+.event-card-title{
+  margin:0 0 18px;
+  color:#241c17;
+  font:600 34px/1.02 var(--serif);
+  letter-spacing:.075em;
   text-transform:uppercase;
+  text-shadow:0 1px 0 rgba(255,255,255,.9);
 }
-.premium-event-card .event-card-time{
-  font-family:var(--serif);
-  font-size:25px;
-  letter-spacing:.028em;
+.event-card-title::after{
+  content:"";
+  display:block;
+  width:112px;
+  height:1px;
+  margin:16px auto 0;
+  background:linear-gradient(90deg,transparent 0%,rgba(158,120,80,.9) 25%,rgba(217,191,157,.98) 50%,rgba(158,120,80,.9) 75%,transparent 100%);
+  box-shadow:0 1px 0 rgba(255,255,255,.7);
 }
-.premium-event-card .event-date-grid strong{
-  font-size:74px;
+.event-card-place{
+  margin-bottom:7px;
+  color:#302720;
+  font-size:20px;
+  letter-spacing:.015em;
+}
+.event-card-hall{
+  display:inline-block;
+  margin:0 auto 15px;
+  padding:0 0 5px;
+  color:#9c7249;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:.055em;
+  border-bottom:1px solid rgba(168,128,87,.32);
+}
+.event-card-time{
+  margin:1px 0 26px;
+  color:#1c1713;
+  font-size:23px;
   font-weight:500;
-  color:#241910;
+  letter-spacing:.008em;
 }
-.premium-event-card .event-date-grid>span{
-  color:#57483d;
-  border-color:rgba(155,126,92,.58);
-}
-
-/* Lễ đính hôn phía trên nhẹ hơn để khối tiệc là focus chính */
-.invitation-section > .ceremony-title:not(.event-card-title){
-  opacity:.86;
-}
-.invitation-section > .ceremony-date,
-.invitation-section > .ceremony-time-long,
-.invitation-section > .ceremony-home-note{
-  color:#6c655f;
-}
-
-/* Mobile */
-@media (max-width:390px){
-  .textfx-chars{--fx-step:28ms}
-  .premium-event-card{
-    padding:38px 19px 31px;
-    border-radius:35px;
-    box-shadow:0 22px 42px rgba(47,36,27,.18),0 9px 18px rgba(115,86,57,.10),inset 0 1px 0 rgba(255,255,255,.95);
-  }
-  .premium-event-card::before{inset:9px;border-radius:27px}
-  .premium-event-card .event-rings-mark{width:64px;height:64px;margin-bottom:12px}
-  .premium-event-card .event-rings-mark::before,
-  .premium-event-card .event-rings-mark::after{width:46px}
-  .premium-event-card .event-card-title{font-size:30px;letter-spacing:.052em}
-  .premium-event-card .event-card-place{font-size:19px}
-  .premium-event-card .event-card-time{font-size:22px}
-  .premium-event-card .event-date-grid strong{font-size:64px}
-}
-
-/* Accessibility / Reduce Motion */
-@media (prefers-reduced-motion:reduce){
-  .textfx-chars .fx-char,
-  .textfx-words .fx-word{
-    opacity:1!important;
-    transform:none!important;
-    filter:none!important;
-    clip-path:none!important;
-    transition:none!important;
-  }
-  .premium-event-card::after{display:none!important}
-}
-
-/* =========================================================
-   V30 — KINETIC LUXURY MOTION
-   - title center-out 3D bloom + champagne foil shimmer
-   - copy ink-ribbon reveal per word
-   - profile names large again + center-out cascade
-   - fix bilingual captions hidden in V29
-   ========================================================= */
-
-/* 0) Fix: caption dưới ảnh OUR MEMORIES phải hiện khi parent reveal */
-.bilingual-caption.is-visible .fx-char,
-.bilingual-caption.is-visible .fx-word{
-  opacity:1!important;
-  transform:none!important;
-  filter:blur(0)!important;
-  clip-path:inset(0 0 0 0)!important;
-}
-
-/* 1) Không cho heading/copy bị slide cả khối nữa — hiệu ứng nằm ở từng ký tự/từ */
-.fx-lux-title[data-reveal],
-.fx-silk-copy[data-reveal],
-.fx-bilingual-han,
-.fx-bilingual-vi{
-  transform:none!important;
-  filter:none!important;
-}
-
-/* 2) Center-out kinetic title — chữ bung ra từ giữa, xen kẽ 3D */
-.fx-lux-title .fx-char{
-  opacity:0;
-  transform:
-    translate3d(var(--fx-x,0),var(--fx-y,28px),0)
-    perspective(700px)
-    rotateX(var(--fx-rx,-74deg))
-    rotateZ(var(--fx-rz,3deg))
-    scale(.78);
-  transform-origin:50% 78%;
-  filter:blur(9px);
-  background:linear-gradient(110deg,#161310 4%,#5f4934 36%,#b48a59 50%,#2b2119 64%,#161310 96%);
-  background-size:240% 100%;
-  background-position:115% 50%;
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  transition:
-    transform 1.16s cubic-bezier(.12,.92,.18,1),
-    opacity .45s ease,
-    filter .9s ease;
-  transition-delay:calc(var(--reveal-delay,0s) + var(--center-i) * 42ms);
-}
-.fx-lux-title.is-visible .fx-char{
-  opacity:1;
-  transform:none;
-  filter:blur(0);
-  animation:luxuryFoilPass 1.35s calc(.55s + var(--center-i) * 28ms) cubic-bezier(.22,.61,.36,1) 1 both;
-}
-@keyframes luxuryFoilPass{
-  0%{background-position:115% 50%;text-shadow:0 0 0 rgba(185,145,96,0)}
-  52%{text-shadow:0 3px 14px rgba(185,145,96,.18)}
-  100%{background-position:-28% 50%;text-shadow:0 0 0 rgba(185,145,96,0)}
-}
-
-/* đường dưới title chỉ xuất hiện ở các heading khác, không dùng trong LỄ ĐÍNH HÔN */
-.invitation-section > .ceremony-title.fx-lux-title::after{display:none!important}
-
-/* 3) Ink-ribbon copy — từng từ quét ngang như mực/lụa mở */
-.textfx-words .fx-word-wrap{overflow:hidden;position:relative}
-.textfx-words .fx-word{
-  opacity:0;
-  transform:translate3d(var(--word-x,-10px),.7em,0) skewX(-7deg);
-  clip-path:inset(0 100% 0 0);
-  filter:blur(4px);
-  transition:
-    clip-path .84s cubic-bezier(.18,.82,.18,1),
-    transform .86s cubic-bezier(.14,.9,.18,1),
-    opacity .38s ease,
-    filter .65s ease;
-  transition-delay:calc(var(--reveal-delay,0s) + var(--word-i) * 58ms);
-}
-.textfx-words.is-visible .fx-word,
-.bilingual-caption.is-visible .textfx-words .fx-word{
-  opacity:1;
-  transform:none;
-  clip-path:inset(0 0 0 0);
-  filter:blur(0);
-}
-
-/* 4) PROFILE NAME — trở lại kích thước rõ, sang như bản trước */
-.name-pill{
-  width:118%;
-  min-height:110px;
-  padding:17px 38px 20px;
-  border-width:1.5px;
-  background:rgba(251,250,247,.97);
-  box-shadow:0 8px 18px rgba(35,30,25,.035);
-}
-.name-pill .profile-role,
-.name-pill > span{
-  font:400 17px/1.15 var(--sans);
-  color:#67615b;
-  letter-spacing:.01em;
-}
-.name-pill strong{
-  margin-top:11px;
-  font:500 42px/.96 var(--serif);
-  letter-spacing:-.025em;
-  color:#211d1a;
-}
-.profile-letter-fx .fx-char{
-  transform:translate3d(var(--fx-x,0),.8em,0) perspective(600px) rotateY(var(--fx-rx,-70deg)) scale(.86);
-  filter:blur(6px);
-  transition-delay:calc(.24s + var(--center-i) * 46ms);
-}
-.profile-section.profile-in .profile-letter-fx .fx-char{
-  opacity:1;
-  transform:none;
-  filter:blur(0);
-}
-.profile-role-fx .fx-word{
-  transition-delay:.12s!important;
-}
-.profile-section.profile-in .profile-role-fx .fx-word{
-  opacity:1;
-  transform:none;
-  filter:blur(0);
-  clip-path:inset(0 0 0 0);
-}
-
-/* 5) LỄ ĐÍNH HÔN — bỏ các đường kẻ trang trí như yêu cầu */
-.invitation-section > .ornament-line::before,
-.invitation-section > .ornament-line::after{
-  display:none!important;
-}
-.invitation-section > .ornament-line{
-  min-height:20px;
-  margin-bottom:18px;
-}
-.invitation-section > .ornament-line.bottom{
-  margin-top:22px;
-  margin-bottom:30px;
-}
-
-/* 6) TIỆC ĐÍNH HÔN — bỏ đường viền trong ngang gây cảm giác thừa,
-      giữ outer champagne border để vẫn premium */
-.premium-event-card::before{display:none!important}
-.premium-event-card{
-  border-width:1.8px;
-  background:
-    radial-gradient(120% 72% at 50% -8%,rgba(255,255,255,.98),rgba(255,255,255,0) 48%) padding-box,
-    linear-gradient(180deg,#fffdfa 0%,#f8f0e6 54%,#f3e7d8 100%) padding-box,
-    linear-gradient(135deg,#8f6842 0%,#e8d1a5 18%,#fff2c6 38%,#b68551 56%,#ead7b2 78%,#8a633e 100%) border-box;
-  box-shadow:
-    0 31px 66px rgba(53,39,28,.21),
-    0 13px 28px rgba(140,101,61,.12),
-    inset 0 1px 0 rgba(255,255,255,.98),
-    inset 0 -18px 38px rgba(172,126,78,.035);
-}
-.premium-event-card[data-reveal="card"]{
-  opacity:0;
-  transform:translateY(38px) scale(.955);
-  clip-path:inset(7% 1.5% 7% 1.5% round 42px);
-  filter:blur(1.2px);
-  transition:
-    opacity .62s ease,
-    transform 1.28s cubic-bezier(.12,.9,.18,1),
-    clip-path 1.28s cubic-bezier(.12,.9,.18,1),
-    filter .9s ease;
-}
-.premium-event-card[data-reveal="card"].is-visible{
-  opacity:1;
-  transform:none;
-  clip-path:inset(0 0 0 0 round 40px);
-  filter:none;
-}
-.premium-event-card .event-rings-mark{
-  box-shadow:
-    0 10px 24px rgba(88,63,39,.13),
-    0 0 0 6px rgba(255,255,255,.38),
-    inset 0 0 0 1px rgba(255,255,255,.72);
-}
-.premium-event-card .event-card-title{
-  font-size:36px;
-  letter-spacing:.07em;
-}
-.premium-event-card .event-card-title::after{
-  width:82px;
-  opacity:.72;
-}
-.premium-event-card .event-card-place{font-size:22px}
-.premium-event-card .event-card-time{font-size:26px}
-.premium-event-card .event-date-grid strong{font-size:78px}
-
-/* 7) Memories captions: đảm bảo khoảng trắng hợp lý sau ảnh */
-.memory-wide + .bilingual-caption{
+.event-date-grid{
   position:relative;
-  z-index:2;
-  min-height:88px;
-  margin-top:24px;
+  margin-top:4px;
+  padding-top:2px;
 }
-.bilingual-caption.is-visible{
-  opacity:1!important;
-  transform:none!important;
-  filter:none!important;
+.event-date-grid::before{
+  content:"";
+  position:absolute;
+  left:12%;right:12%;top:-10px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(151,119,86,.32),transparent);
+}
+.event-date-grid>span{
+  color:#493a2f;
+  border-color:rgba(142,118,93,.62);
+}
+.event-date-grid strong{
+  color:#1d1713;
+  font-size:72px;
+  font-weight:600;
+  text-shadow:0 1px 0 rgba(255,255,255,.9);
+}
+.event-card .lunar{
+  margin-top:18px;
+  color:#756b61;
+  font-size:15px;
 }
 
+/* LỄ ĐÍNH HÔN giữ trang nhã để nhường trọng tâm cho khối tiệc */
+.invitation-section .ceremony-title{
+  color:#4f4942;
+  font-weight:500;
+  letter-spacing:.05em;
+}
+.invitation-section .ceremony-date{
+  color:#35302b;
+  font-weight:560;
+}
+.invitation-section .ceremony-time-long{color:#4f4943}
+.invitation-section .ceremony-home-note{color:#8a8178}
+
+/* Một chút nhịp sống cho SAVE THE DATE, không lặp vô tận */
+body.invitation-opened .save-date{
+  animation:saveDateBreath 1.25s .7s cubic-bezier(.16,.85,.2,1) 1 both;
+}
+@keyframes saveDateBreath{
+  0%{letter-spacing:-.03em;filter:blur(1.2px)}
+  55%{letter-spacing:.005em;filter:blur(0)}
+  100%{letter-spacing:-.03em;filter:blur(0)}
+}
+
+/* Chữ ký OUR MEMORIES: thêm nét "mực" hiện dần */
+.signature-block span{
+  filter:blur(1.4px);
+  transition-property:opacity,transform,filter;
+}
+.signature-block.is-visible span{filter:blur(0)}
+
 @media (max-width:390px){
-  .name-pill{min-height:104px;padding:15px 31px 18px}
-  .name-pill .profile-role,.name-pill>span{font-size:15.5px}
-  .name-pill strong{font-size:38px}
-  .premium-event-card .event-card-title{font-size:31px}
-  .premium-event-card .event-card-place{font-size:20px}
-  .premium-event-card .event-card-time{font-size:23px}
-  .premium-event-card .event-date-grid strong{font-size:68px}
-  .memory-wide + .bilingual-caption{min-height:82px;margin-top:21px}
+  .event-card{padding:39px 19px 33px;border-radius:35px}
+  .event-card::before{inset:9px;border-radius:27px}
+  .event-rings-mark{width:60px;height:60px;margin-bottom:16px;font-size:34px}
+  .event-rings-mark::before,.event-rings-mark::after{width:42px}
+  .event-rings-mark::before{right:calc(100% + 9px)}
+  .event-rings-mark::after{left:calc(100% + 9px)}
+  .event-card-title{font-size:29px;letter-spacing:.07em;margin-bottom:16px}
+  .event-card-title::after{width:92px;margin-top:13px}
+  .event-card-place{font-size:18px}
+  .event-card-hall{font-size:14px;margin-bottom:13px}
+  .event-card-time{font-size:20px;margin-bottom:23px}
+  .event-date-grid{grid-template-columns:1fr 104px 1fr}
+  .event-date-grid>span{font-size:16px}
+  .event-date-grid strong{font-size:62px}
+  .event-card .lunar{font-size:14px;margin-top:15px}
+  .letter-reveal .lux-char{transition-delay:calc(var(--reveal-delay,0s) + (var(--char-i) * 31ms))}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .fx-lux-title .fx-char,
-  .profile-letter-fx .fx-char,
-  .textfx-words .fx-word,
-  .profile-role-fx .fx-word{
+  .letter-reveal .lux-char,
+  [data-reveal="silk"],
+  [data-reveal="script-draw"],
+  [data-reveal="number-pop"],
+  [data-reveal="date-rise"] > *,
+  .invite-copy .invite-copy-line,
+  .invite-copy .invite-couple,
+  .event-card[data-reveal="card-premium"]{
     opacity:1!important;
     transform:none!important;
     filter:none!important;
     clip-path:none!important;
-    animation:none!important;
     transition:none!important;
   }
-  .premium-event-card[data-reveal="card"]{
-    opacity:1!important;
-    transform:none!important;
-    clip-path:none!important;
-    filter:none!important;
-  }
+  .event-card::after{display:none!important}
 }
