@@ -354,11 +354,18 @@ function prepareCharFx(el, extraClass=""){
   if(extraClass) el.classList.add(extraClass);
 
   const frag = document.createDocumentFragment();
-  Array.from(text).forEach((char,index) => {
+  const chars = Array.from(text);
+  const center = (chars.length - 1) / 2;
+  chars.forEach((char,index) => {
     const span = document.createElement("span");
     span.className = char === " " ? "fx-char fx-space" : "fx-char";
     span.setAttribute("aria-hidden","true");
     span.style.setProperty("--char-i", index);
+    span.style.setProperty("--center-i", Math.abs(index - center).toFixed(2));
+    span.style.setProperty("--fx-x", `${index % 2 === 0 ? -18 : 18}px`);
+    span.style.setProperty("--fx-y", `${24 + (index % 3) * 7}px`);
+    span.style.setProperty("--fx-rx", `${index % 2 === 0 ? -76 : 76}deg`);
+    span.style.setProperty("--fx-rz", `${index % 2 === 0 ? -4.5 : 4.5}deg`);
     span.textContent = char === " " ? "\u00A0" : char;
     frag.appendChild(span);
   });
@@ -383,6 +390,7 @@ function prepareWordFx(el, extraClass=""){
     wrap.className = "fx-word-wrap";
     wrap.setAttribute("aria-hidden","true");
     wrap.style.setProperty("--word-i", index);
+    wrap.style.setProperty("--word-x", `${index % 2 === 0 ? -12 : 12}px`);
     const inner = document.createElement("span");
     inner.className = "fx-word";
     inner.textContent = word;
@@ -414,6 +422,7 @@ requestAnimationFrame(() => requestAnimationFrame(() => document.querySelector("
   document.querySelectorAll(selector).forEach(el => prepareCharFx(el,"hero-letter-fx"));
 });
 document.querySelectorAll(".profile-name-pill strong").forEach(el => prepareCharFx(el,"profile-letter-fx"));
+document.querySelectorAll(".profile-name-pill .profile-role").forEach(el => prepareWordFx(el,"profile-role-fx"));
 
 // Các đoạn văn / địa chỉ: mở từng từ, không còn slide nguyên khối đơn điệu
 [

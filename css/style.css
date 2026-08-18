@@ -2309,3 +2309,238 @@ body.invitation-opened .hero-letter-fx .fx-char{
   }
   .premium-event-card::after{display:none!important}
 }
+
+/* =========================================================
+   V30 — KINETIC LUXURY MOTION
+   - title center-out 3D bloom + champagne foil shimmer
+   - copy ink-ribbon reveal per word
+   - profile names large again + center-out cascade
+   - fix bilingual captions hidden in V29
+   ========================================================= */
+
+/* 0) Fix: caption dưới ảnh OUR MEMORIES phải hiện khi parent reveal */
+.bilingual-caption.is-visible .fx-char,
+.bilingual-caption.is-visible .fx-word{
+  opacity:1!important;
+  transform:none!important;
+  filter:blur(0)!important;
+  clip-path:inset(0 0 0 0)!important;
+}
+
+/* 1) Không cho heading/copy bị slide cả khối nữa — hiệu ứng nằm ở từng ký tự/từ */
+.fx-lux-title[data-reveal],
+.fx-silk-copy[data-reveal],
+.fx-bilingual-han,
+.fx-bilingual-vi{
+  transform:none!important;
+  filter:none!important;
+}
+
+/* 2) Center-out kinetic title — chữ bung ra từ giữa, xen kẽ 3D */
+.fx-lux-title .fx-char{
+  opacity:0;
+  transform:
+    translate3d(var(--fx-x,0),var(--fx-y,28px),0)
+    perspective(700px)
+    rotateX(var(--fx-rx,-74deg))
+    rotateZ(var(--fx-rz,3deg))
+    scale(.78);
+  transform-origin:50% 78%;
+  filter:blur(9px);
+  background:linear-gradient(110deg,#161310 4%,#5f4934 36%,#b48a59 50%,#2b2119 64%,#161310 96%);
+  background-size:240% 100%;
+  background-position:115% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  transition:
+    transform 1.16s cubic-bezier(.12,.92,.18,1),
+    opacity .45s ease,
+    filter .9s ease;
+  transition-delay:calc(var(--reveal-delay,0s) + var(--center-i) * 42ms);
+}
+.fx-lux-title.is-visible .fx-char{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+  animation:luxuryFoilPass 1.35s calc(.55s + var(--center-i) * 28ms) cubic-bezier(.22,.61,.36,1) 1 both;
+}
+@keyframes luxuryFoilPass{
+  0%{background-position:115% 50%;text-shadow:0 0 0 rgba(185,145,96,0)}
+  52%{text-shadow:0 3px 14px rgba(185,145,96,.18)}
+  100%{background-position:-28% 50%;text-shadow:0 0 0 rgba(185,145,96,0)}
+}
+
+/* đường dưới title chỉ xuất hiện ở các heading khác, không dùng trong LỄ ĐÍNH HÔN */
+.invitation-section > .ceremony-title.fx-lux-title::after{display:none!important}
+
+/* 3) Ink-ribbon copy — từng từ quét ngang như mực/lụa mở */
+.textfx-words .fx-word-wrap{overflow:hidden;position:relative}
+.textfx-words .fx-word{
+  opacity:0;
+  transform:translate3d(var(--word-x,-10px),.7em,0) skewX(-7deg);
+  clip-path:inset(0 100% 0 0);
+  filter:blur(4px);
+  transition:
+    clip-path .84s cubic-bezier(.18,.82,.18,1),
+    transform .86s cubic-bezier(.14,.9,.18,1),
+    opacity .38s ease,
+    filter .65s ease;
+  transition-delay:calc(var(--reveal-delay,0s) + var(--word-i) * 58ms);
+}
+.textfx-words.is-visible .fx-word,
+.bilingual-caption.is-visible .textfx-words .fx-word{
+  opacity:1;
+  transform:none;
+  clip-path:inset(0 0 0 0);
+  filter:blur(0);
+}
+
+/* 4) PROFILE NAME — trở lại kích thước rõ, sang như bản trước */
+.name-pill{
+  width:118%;
+  min-height:110px;
+  padding:17px 38px 20px;
+  border-width:1.5px;
+  background:rgba(251,250,247,.97);
+  box-shadow:0 8px 18px rgba(35,30,25,.035);
+}
+.name-pill .profile-role,
+.name-pill > span{
+  font:400 17px/1.15 var(--sans);
+  color:#67615b;
+  letter-spacing:.01em;
+}
+.name-pill strong{
+  margin-top:11px;
+  font:500 42px/.96 var(--serif);
+  letter-spacing:-.025em;
+  color:#211d1a;
+}
+.profile-letter-fx .fx-char{
+  transform:translate3d(var(--fx-x,0),.8em,0) perspective(600px) rotateY(var(--fx-rx,-70deg)) scale(.86);
+  filter:blur(6px);
+  transition-delay:calc(.24s + var(--center-i) * 46ms);
+}
+.profile-section.profile-in .profile-letter-fx .fx-char{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+}
+.profile-role-fx .fx-word{
+  transition-delay:.12s!important;
+}
+.profile-section.profile-in .profile-role-fx .fx-word{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+  clip-path:inset(0 0 0 0);
+}
+
+/* 5) LỄ ĐÍNH HÔN — bỏ các đường kẻ trang trí như yêu cầu */
+.invitation-section > .ornament-line::before,
+.invitation-section > .ornament-line::after{
+  display:none!important;
+}
+.invitation-section > .ornament-line{
+  min-height:20px;
+  margin-bottom:18px;
+}
+.invitation-section > .ornament-line.bottom{
+  margin-top:22px;
+  margin-bottom:30px;
+}
+
+/* 6) TIỆC ĐÍNH HÔN — bỏ đường viền trong ngang gây cảm giác thừa,
+      giữ outer champagne border để vẫn premium */
+.premium-event-card::before{display:none!important}
+.premium-event-card{
+  border-width:1.8px;
+  background:
+    radial-gradient(120% 72% at 50% -8%,rgba(255,255,255,.98),rgba(255,255,255,0) 48%) padding-box,
+    linear-gradient(180deg,#fffdfa 0%,#f8f0e6 54%,#f3e7d8 100%) padding-box,
+    linear-gradient(135deg,#8f6842 0%,#e8d1a5 18%,#fff2c6 38%,#b68551 56%,#ead7b2 78%,#8a633e 100%) border-box;
+  box-shadow:
+    0 31px 66px rgba(53,39,28,.21),
+    0 13px 28px rgba(140,101,61,.12),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -18px 38px rgba(172,126,78,.035);
+}
+.premium-event-card[data-reveal="card"]{
+  opacity:0;
+  transform:translateY(38px) scale(.955);
+  clip-path:inset(7% 1.5% 7% 1.5% round 42px);
+  filter:blur(1.2px);
+  transition:
+    opacity .62s ease,
+    transform 1.28s cubic-bezier(.12,.9,.18,1),
+    clip-path 1.28s cubic-bezier(.12,.9,.18,1),
+    filter .9s ease;
+}
+.premium-event-card[data-reveal="card"].is-visible{
+  opacity:1;
+  transform:none;
+  clip-path:inset(0 0 0 0 round 40px);
+  filter:none;
+}
+.premium-event-card .event-rings-mark{
+  box-shadow:
+    0 10px 24px rgba(88,63,39,.13),
+    0 0 0 6px rgba(255,255,255,.38),
+    inset 0 0 0 1px rgba(255,255,255,.72);
+}
+.premium-event-card .event-card-title{
+  font-size:36px;
+  letter-spacing:.07em;
+}
+.premium-event-card .event-card-title::after{
+  width:82px;
+  opacity:.72;
+}
+.premium-event-card .event-card-place{font-size:22px}
+.premium-event-card .event-card-time{font-size:26px}
+.premium-event-card .event-date-grid strong{font-size:78px}
+
+/* 7) Memories captions: đảm bảo khoảng trắng hợp lý sau ảnh */
+.memory-wide + .bilingual-caption{
+  position:relative;
+  z-index:2;
+  min-height:88px;
+  margin-top:24px;
+}
+.bilingual-caption.is-visible{
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+}
+
+@media (max-width:390px){
+  .name-pill{min-height:104px;padding:15px 31px 18px}
+  .name-pill .profile-role,.name-pill>span{font-size:15.5px}
+  .name-pill strong{font-size:38px}
+  .premium-event-card .event-card-title{font-size:31px}
+  .premium-event-card .event-card-place{font-size:20px}
+  .premium-event-card .event-card-time{font-size:23px}
+  .premium-event-card .event-date-grid strong{font-size:68px}
+  .memory-wide + .bilingual-caption{min-height:82px;margin-top:21px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-lux-title .fx-char,
+  .profile-letter-fx .fx-char,
+  .textfx-words .fx-word,
+  .profile-role-fx .fx-word{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    clip-path:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+  .premium-event-card[data-reveal="card"]{
+    opacity:1!important;
+    transform:none!important;
+    clip-path:none!important;
+    filter:none!important;
+  }
+}

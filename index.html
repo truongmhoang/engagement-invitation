@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italianno&family=Mrs+Saint+Delafield&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=29" onerror="this.onerror=null;this.href='css/style.css?v=29'">
+  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=30" onerror="this.onerror=null;this.href='css/style.css?v=30'">
 </head>
 <body class="locked">
   <!-- =====================================================
@@ -123,7 +123,7 @@
       </div>
 
       <div class="name-pill pill-right profile-name-pill" data-profile-slide="left">
-        <span data-groom-role>Út Nam</span>
+        <span class="profile-role" data-groom-role>Út Nam</span>
         <strong data-groom-display>Truong Hoang</strong>
       </div>
     </section>
@@ -142,7 +142,7 @@
       </div>
 
       <div class="name-pill pill-left profile-name-pill" data-profile-slide="right">
-        <span data-bride-role>Út Nữ</span>
+        <span class="profile-role" data-bride-role>Út Nữ</span>
         <strong data-bride-display>Thuý Linh</strong>
       </div>
     </section>
@@ -351,8 +351,8 @@
           next();
         });
       }
-      loadFirst(["config.js?v=29", "js/config.js?v=29"])
-        .then(function(){ return loadFirst(["script.js?v=29", "js/script.js?v=29"]); })
+      loadFirst(["config.js?v=30", "js/config.js?v=30"])
+        .then(function(){ return loadFirst(["script.js?v=30", "js/script.js?v=30"]); })
         .catch(function(err){ console.error(err); });
     })();
   </script>
