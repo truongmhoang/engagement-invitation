@@ -2683,3 +2683,17 @@ body.invitation-opened .hero-letter-fx .fx-char{
     transition:none!important;
   }
 }
+
+/* =========================================================
+   V32 — FIX MẤT 2 DÒNG LỜI MỜI TRƯỚC TÊN CÔ DÂU CHÚ RỂ
+   ========================================================= */
+.invite-copy.is-visible .invite-copy-line.textfx-words .fx-word{
+  opacity:1!important;
+  transform:none!important;
+  clip-path:inset(0 0 0 0)!important;
+  filter:none!important;
+}
+.invite-copy-line.textfx-words{
+  min-height:1.45em;
+  overflow:visible;
+}
