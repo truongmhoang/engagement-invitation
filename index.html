@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italianno&family=Mrs+Saint+Delafield&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=33" onerror="this.onerror=null;this.href='css/style.css?v=33'">
+  <link id="mainStylesheet" rel="stylesheet" href="style.css?v=32" onerror="this.onerror=null;this.href='css/style.css?v=32'">
 </head>
 <body class="locked">
   <!-- =====================================================
@@ -157,7 +157,7 @@
       <p class="ceremony-home-note" data-ceremony-home-note data-reveal="left-soft">Lễ đính hôn diễn ra tại tư gia.</p>
       <div class="ornament-line bottom" data-reveal="up"><span>❦</span></div>
 
-      <div class="invite-copy invite-copy-lower">
+      <div class="invite-copy invite-copy-lower" data-reveal="invite">
         <span class="invite-copy-line">Thân mời quý vị đến tham dự</span>
         <span class="invite-copy-line">bữa tiệc chung vui cùng</span>
         <strong class="invite-couple"><span data-groom-display>Truong Hoang</span> <em>&amp;</em> <span data-bride-display>Thuý Linh</span></strong>
@@ -351,8 +351,8 @@
           next();
         });
       }
-      loadFirst(["config.js?v=33", "js/config.js?v=33"])
-        .then(function(){ return loadFirst(["script.js?v=33", "js/script.js?v=33"]); })
+      loadFirst(["config.js?v=32", "js/config.js?v=32"])
+        .then(function(){ return loadFirst(["script.js?v=32", "js/script.js?v=32"]); })
         .catch(function(err){ console.error(err); });
     })();
   </script>

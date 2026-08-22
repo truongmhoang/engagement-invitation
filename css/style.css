@@ -2697,25 +2697,3 @@ body.invitation-opened .hero-letter-fx .fx-char{
   min-height:1.45em;
   overflow:visible;
 }
-
-
-/* =========================================================
-   V33 — LỜI MỜI LUÔN HIỂN THỊ, KHÔNG DÙNG is-visible
-   ========================================================= */
-.invite-copy,
-.invite-copy.invite-copy-lower,
-.invite-copy-line,
-.invite-copy-line.textfx-words,
-.invite-copy-line .fx-word-wrap,
-.invite-copy-line .fx-word{
-  opacity:1 !important;
-  visibility:visible !important;
-  transform:none !important;
-  filter:none !important;
-  clip-path:none !important;
-  animation:none !important;
-  transition:none !important;
-}
-.invite-copy-line{
-  display:block !important;
-}
