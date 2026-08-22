@@ -562,7 +562,7 @@ async function submitToLegacyEndpoint(formData){
 
 if(destinationEl){
   destinationEl.textContent = getGoogleSheetsEndpoint()
-    ? "Thông tin xác nhận sẽ được lưu vào Google Sheets."
+    ? ""
     : "Chưa kết nối Google Sheets. Hãy dán URL Apps Script Web App vào config.js.";
 }
 
