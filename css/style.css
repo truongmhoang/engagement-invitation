@@ -2809,8 +2809,8 @@ body.invitation-opened .hero-letter-fx .fx-char{
   .countdown-section .countdown-message{min-height:5.2em}
 }
 /* Tăng riêng kích thước giờ trong TIMELINE */
-.compact-time{
-  font-size: 17px !important;
-  line-height: 1.1 !important;
-  font-weight: 600 !important;
+.compact-timeline .compact-step .compact-time {
+    font-size: 17px !important;
+    line-height: 1.1 !important;
+    font-weight: 500 !important;
 }
