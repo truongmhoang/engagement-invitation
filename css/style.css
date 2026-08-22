@@ -2808,3 +2808,8 @@ body.invitation-opened .hero-letter-fx .fx-char{
   .rsvp-form .guest-side-options label{padding:0 8px;font-size:12.5px}
   .countdown-section .countdown-message{min-height:5.2em}
 }
+/* Tăng riêng kích thước giờ trong TIMELINE */
+.compact-time{
+  font-size: 13px !important;
+  font-weight: 600;
+}
