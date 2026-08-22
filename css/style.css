@@ -2810,6 +2810,7 @@ body.invitation-opened .hero-letter-fx .fx-char{
 }
 /* Tăng riêng kích thước giờ trong TIMELINE */
 .compact-time{
-  font-size: 13px !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
   font-weight: 600;
 }
