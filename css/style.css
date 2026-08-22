@@ -2811,7 +2811,7 @@ body.invitation-opened .hero-letter-fx .fx-char{
 /* Tăng riêng kích thước giờ trong TIMELINE */
 /* GIỮ GIỜ TO + TÁCH KHỎI ICON */
 .compact-timeline .compact-time{
-  font-size:18px !important;
+  font-size:20px !important;
   line-height:1 !important;
 }
 
