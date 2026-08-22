@@ -2809,8 +2809,21 @@ body.invitation-opened .hero-letter-fx .fx-char{
   .countdown-section .countdown-message{min-height:5.2em}
 }
 /* Tăng riêng kích thước giờ trong TIMELINE */
-.compact-timeline .compact-step .compact-time {
-    font-size: 17px !important;
-    line-height: 1.1 !important;
-    font-weight: 500 !important;
+/* GIỮ GIỜ TO + TÁCH KHỎI ICON */
+.compact-timeline .compact-time{
+  font-size:17px !important;
+  line-height:1 !important;
+}
+
+/* Dời icon xuống nhẹ */
+.compact-step:nth-of-type(2)::before{
+  top:34px !important;
+}
+
+.compact-step:nth-of-type(3)::before{
+  top:35px !important;
+}
+
+.compact-step:nth-of-type(4)::before{
+  top:34px !important;
 }
