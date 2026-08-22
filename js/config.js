@@ -102,6 +102,8 @@ window.WEDDING_CONFIG = {
   /* =========================================================
      9. RSVP -> GOOGLE SHEETS
      ========================================================= */
+  // Dán URL Apps Script Web App kết thúc bằng /exec vào đây.
+  // Ví dụ: https://script.google.com/macros/s/AKfycb.../exec
   googleSheetsEndpoint: "",
   googleSheetsTabName: "RSVP",
   rsvpEndpoint: ""

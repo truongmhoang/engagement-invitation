@@ -2697,3 +2697,114 @@ body.invitation-opened .hero-letter-fx .fx-char{
   min-height:1.45em;
   overflow:visible;
 }
+
+
+/* =========================================================
+   V33 — LỜI MỜI LUÔN HIỂN THỊ, KHÔNG DÙNG is-visible
+   ========================================================= */
+.invite-copy,
+.invite-copy.invite-copy-lower,
+.invite-copy-line,
+.invite-copy-line.textfx-words,
+.invite-copy-line .fx-word-wrap,
+.invite-copy-line .fx-word{
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+  filter:none !important;
+  clip-path:none !important;
+  animation:none !important;
+  transition:none !important;
+}
+.invite-copy-line{
+  display:block !important;
+}
+
+
+/* =========================================================
+   V34 — COUNTDOWN TEXT SAFE + RSVP PHONE / GUEST SIDE
+   - Countdown title/note luôn hiển thị, không phụ thuộc observer.
+   - Thêm số điện thoại + Bạn cô dâu/Bạn chú rể.
+   ========================================================= */
+.countdown-section .countdown-text-safe,
+.countdown-section .countdown-script,
+.countdown-section .countdown-message{
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+  clip-path:none !important;
+  filter:none !important;
+  animation:none !important;
+}
+.countdown-section .countdown-script{
+  display:block !important;
+  min-height:1.1em;
+}
+.countdown-section .countdown-message{
+  display:block !important;
+  min-height:4.8em;
+}
+
+.rsvp-form input[type="tel"]{
+  width:100%;
+  height:48px;
+  padding:0 17px;
+  margin-bottom:16px;
+  border:1px solid #868582;
+  border-radius:25px;
+  background:transparent;
+  color:#24211f;
+  outline:none;
+  font:400 14px/1.4 var(--sans);
+}
+.rsvp-form input[type="tel"]::placeholder{color:#8c8985}
+.rsvp-form input[type="tel"]:focus,
+.rsvp-form>input:focus,
+.rsvp-form textarea:focus,
+.guest-select-shell select:focus{
+  border-color:#9b8066;
+  box-shadow:0 0 0 3px rgba(155,128,102,.08);
+}
+
+.guest-side-wrap{margin:0 0 18px}
+.guest-side-title{
+  margin:0 0 9px;
+  color:#8c8985;
+  font:400 14px/1.25 var(--sans);
+}
+.guest-side-options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+.rsvp-form .guest-side-options label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:46px;
+  margin:0;
+  padding:0 12px;
+  border:1px solid #91908c;
+  border-radius:24px;
+  background:transparent;
+  color:#37332f;
+  font:400 13px/1.2 var(--sans);
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+.rsvp-form .guest-side-options label:has(input:checked){
+  background:#eee9e1;
+  border-color:#a69683;
+}
+.rsvp-form .guest-side-options input[type="radio"]{
+  margin:0;
+  accent-color:#8e745b;
+  flex:0 0 auto;
+}
+
+@media (max-width:390px){
+  .guest-side-options{gap:7px}
+  .rsvp-form .guest-side-options label{padding:0 8px;font-size:12.5px}
+  .countdown-section .countdown-message{min-height:5.2em}
+}

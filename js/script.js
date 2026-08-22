@@ -82,6 +82,11 @@ if(cfg.countdownNoteHtml){
   });
 }
 
+// V34: countdown text phải luôn có thể đọc được kể cả khi IntersectionObserver/reveal bị lỗi trên mobile.
+document.querySelectorAll(".countdown-script, .countdown-message").forEach(el => {
+  el.classList.add("is-visible", "countdown-text-safe");
+});
+
 if(cfg.shareTitle) document.title = cfg.shareTitle;
 setMeta("og:title", cfg.shareTitle);
 setMeta("og:description", cfg.shareDescription);
@@ -425,7 +430,6 @@ requestAnimationFrame(() => requestAnimationFrame(() => document.querySelector("
 
 // Các đoạn văn / địa chỉ: mở từng từ, không còn slide nguyên khối đơn điệu
 [
-  ".invite-copy-line",
   ".ceremony-home-note",
   ".venue-address",
   ".quote-block"
@@ -457,13 +461,6 @@ if("IntersectionObserver" in window){
           entry.target.classList.add("is-visible");
 
           // V32: các dòng lời mời đã được tách thành từng từ nhưng nằm bên trong
-          // .invite-copy. Khi parent hiện, truyền trạng thái visible xuống child
-          // để tránh chữ bị chiếm chỗ nhưng vẫn opacity:0.
-          if(entry.target.classList.contains("invite-copy")){
-            entry.target.querySelectorAll(".invite-copy-line.textfx-words").forEach(line => {
-              line.classList.add("is-visible");
-            });
-          }
         });
         observer.unobserve(entry.target);
       }
@@ -485,7 +482,6 @@ if("IntersectionObserver" in window){
   document.querySelectorAll(".profile-section").forEach(section => profileObserver.observe(section));
 }else{
   document.querySelectorAll("[data-reveal]").forEach(el => el.classList.add("is-visible"));
-  document.querySelectorAll(".invite-copy-line.textfx-words").forEach(el => el.classList.add("is-visible"));
   document.querySelectorAll(".profile-section").forEach(section => section.classList.add("profile-in"));
 }
 
@@ -583,6 +579,8 @@ if(form && statusEl){
     setSubmitState(true);
 
     const data = new FormData(form);
+    data.set("phone", form.querySelector('[name="phone"]')?.value.trim() || "");
+    data.set("guestSide", form.querySelector('[name="guestSide"]:checked')?.value || "");
     data.set("guestCount", guestCountEl?.disabled ? "0" : (guestCountEl?.value || ""));
     data.set("groom", cfg.groomDisplay || cfg.groom || "");
     data.set("bride", cfg.brideDisplay || cfg.bride || "");
